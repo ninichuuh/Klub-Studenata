@@ -232,7 +232,7 @@ a:focus-visible {
 
 /* || DASH HEADER, CONTAINER & FOOTER */
 header {
-  height: 10vh;
+  height: 80px;
   padding: 1vh;
   position: fixed;
   display: flex;

@@ -13,19 +13,17 @@ const Public = () => {
       <section className="public">
         <PublicHeader />
         <Suspense fallback={<Loader />}>
-          <div className="containerscroll">
-            <div className="part">
-              <Head />
-            </div>
-            <div className="part">
-              <About />
-            </div>
-            <div className="part">
-              <Gallery />
-            </div>
-            <div className="part">
-              <Form />
-            </div>
+          <div className="part">
+            <Head />
+          </div>
+          <div className="part">
+            <About />
+          </div>
+          <div className="part">
+            <Gallery />
+          </div>
+          <div className="part">
+            <Form />
           </div>
         </Suspense>
       </section>
