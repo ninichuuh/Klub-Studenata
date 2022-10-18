@@ -487,3 +487,18 @@ tr {
     position: static;
   }
 }
+
+.path {
+  stroke-dasharray: 250;
+  stroke-dashoffset: 0;
+  animation: dash 5s linear alternate infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 750;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
