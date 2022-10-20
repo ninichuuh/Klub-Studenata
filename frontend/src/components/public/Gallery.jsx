@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { img1, img2, img3, img4, img5 } from "../img/images";
+import { img1, img2, img3, img4, img5 } from "../../img/images";
 
 // import required modules
 import { Pagination, Lazy, Navigation, Autoplay, Keyboard } from "swiper";
