@@ -12,13 +12,12 @@ const Sections = React.lazy(() => import("./Sections"));
 const Public = () => {
   const content = (
     <div className="min-h-screen bg-slate-50 dark:bg-black dark:text-white">
-      
       <Suspense fallback={<Loader />}>
-      <PublicHeader />
-        <main className="mx-auto max-w-4xl">
+        <PublicHeader />
+        <main className="mx-auto max-w-7xl">
           <Hero />
           <About />
-          <Grid/>
+          <Grid />
           <Sections />
           {/* <Gallery /> */}
           <Form />

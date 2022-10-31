@@ -1,7 +1,7 @@
 {
-  "name": "lesson_08",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "techNotes MERN Project",
+  "description": "KsiMB MERN Project",
   "main": "server.js",
   "scripts": {
     "start": "node server",
