@@ -8,7 +8,7 @@ const PublicHeader = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 bg-teal-700 text-white">
+    <header className="sticky top-0 z-10 bg-green-900 text-white">
       <section className="mx-auto flex max-w-4xl items-center justify-between p-4">
         <h1 className="text-3xl font-medium">
           <a href="#hero">KSI Mate Balote</a>
@@ -29,13 +29,13 @@ const PublicHeader = () => {
             <a href="#sections" className="hover:opacity-90">
               Naše Sekcije
             </a>
-            <a href="#testimonials" className="hover:opacity-90">
-              Vaše riječi
-            </a>
             <a href="#contact" className="hover:opacity-90">
               Kontakt
             </a>
-            <a href="#contact" className="hover:opacity-90">
+            <a href="/events" className="hover:opacity-90">
+              Događanja
+            </a>
+            <a href="/login" className="hover:opacity-90">
               Prijava
             </a>
           </nav>
@@ -70,7 +70,13 @@ const PublicHeader = () => {
             href="#contact"
             className="w-full py-6 text-center hover:opacity-90"
           >
-            Contact Us
+            Kontaktiraj nas
+          </a>
+          <a
+            href="/events"
+            className="w-full py-6 text-center hover:opacity-90"
+          >
+            Dogadanja
           </a>
           <a
             href="#footer"

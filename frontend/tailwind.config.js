@@ -16,13 +16,15 @@ module.exports = {
       },
       keyframes: {
         "open-menu": {
-          "0%": { transform: "scaleY(0)" },
-          "80%": { transform: "scaleY(1.2)" },
-          "100%": { transform: "scaleY(1)" },
+          "0%": { transform: "scaleX(0)" },
+          "80%": { transform: "scaleX(1.2)" },
+          "100%": { transform: "scaleX(1)" },
         },
+       
       },
       animation: {
         "open-menu": "open-menu 0.5s ease-in-out forwards",
+        "mate-pulse": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },

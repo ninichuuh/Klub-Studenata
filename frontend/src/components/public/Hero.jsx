@@ -1,14 +1,13 @@
-import Tunnel from "../../img/tunnel.png";
 const Head = () => {
   return (
     <section
       id="hero"
-      className="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-8 p-6 sm:flex-row"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-8 p-6 sm:flex-row"
     >
       <article className="sm:w-1/2">
         <h2 className="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
-          Klub studenata Istre &nbsp;
-          <span className="text-indigo-700 dark:text-indigo-300">
+          Klub studenata Istre
+          <span className="text-indigo-300 dark:text-cyan-300 mx-2">
             Mate Balota
           </span>
         </h2>
@@ -20,7 +19,8 @@ const Head = () => {
           1963-2023
         </p>
       </article>
-      <img className="w-1/2" src={Tunnel} alt="Rocket Dab" />
+      <div className= 'bg-[url("https://data.labin.com/web/fotovijesti/neobavezno_1138_v.jpg")] w-80 h-80 bg-no-repeat bg-center animate-mate-pulse'>   
+      </div>
     </section>
   );
 };

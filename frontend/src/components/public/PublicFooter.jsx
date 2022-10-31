@@ -2,8 +2,8 @@ import React from "react";
 
 const PublicFooter = () => {
   return (
-    <footer id="footer" className="bg-teal-700 text-xl text-white">
-      <section className="mx-auto flex flex-col sm:flex-row ">
+    <footer id="footer" className="bg-zinc-800 hover:bg-zinc-600 text-white">
+      <section className="mx-auto flex flex-col text-center justify-evenly  ">
         <address>
           <h2>Klub Studenata Istre Mate Balote</h2>
           Ilica 13, Zagreb, Hrvatska
@@ -27,7 +27,7 @@ const PublicFooter = () => {
         <div className="flex flex-col sm:gap-2">
           <p className="text-center">
             Copyright &copy; <span id="year">2022</span> <br />
-            All Rights Reserved
+            <a href="/privacy" className="hover:opacity-90">Politika Privatnosti</a>
           </p>
         </div>
       </section>

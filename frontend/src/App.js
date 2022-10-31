@@ -13,16 +13,20 @@ import NewNote from "./features/notes/NewNote";
 import Prefetch from "./features/auth/Prefetch";
 import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
+import EventPage from "./components/public/EventPage";
 import { ROLES } from "./config/roles";
-import Test from "./components/Test";
+import Events from "./components/public/Events";
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* public routes */}
         <Route index element={<Public />} />
-        <Route path="login" element={<Login />} />
-        <Route path="test" element={<Test />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="events">
+          <Route index element={<Events />} />
+          <Route path=":id" element={<EventPage />} />
+        </Route>
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
           <Route
