@@ -7,7 +7,7 @@ const Head = () => {
       <article className="sm:w-1/2">
         <h2 className="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
           Klub studenata Istre
-          <span className="text-indigo-300 dark:text-cyan-300 mx-2">
+          <span className="mx-2 text-indigo-300 dark:text-purple-400">
             Mate Balota
           </span>
         </h2>
@@ -19,8 +19,7 @@ const Head = () => {
           1963-2023
         </p>
       </article>
-      <div className= 'bg-[url("https://data.labin.com/web/fotovijesti/neobavezno_1138_v.jpg")] w-80 h-80 bg-no-repeat bg-center animate-mate-pulse'>   
-      </div>
+      <div className='h-80 w-80 animate-mate-pulse bg-[url("https://data.labin.com/web/fotovijesti/neobavezno_1138_v.jpg")] bg-center bg-no-repeat'></div>
     </section>
   );
 };

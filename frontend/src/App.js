@@ -16,6 +16,8 @@ import RequireAuth from "./features/auth/RequireAuth";
 import EventPage from "./components/public/EventPage";
 import { ROLES } from "./config/roles";
 import Events from "./components/public/Events";
+import Sections from "./components/public/Sections";
+import SectionPage from "./components/public/SectionPage";
 function App() {
   return (
     <Routes>
@@ -23,6 +25,11 @@ function App() {
         {/* public routes */}
         <Route index element={<Public />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="sections">
+          <Route index element={<Sections />} />
+          <Route path=":id" element={<SectionPage />} />
+        </Route>
         <Route path="events">
           <Route index element={<Events />} />
           <Route path=":id" element={<EventPage />} />

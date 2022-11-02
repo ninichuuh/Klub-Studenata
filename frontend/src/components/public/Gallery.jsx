@@ -1,74 +1,87 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { useNavigate } from "react-router-dom";
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css/bundle";
+
 import { img1, img2, img3, img4, img5 } from "../../img/images";
 
 // import required modules
-import { Pagination, Lazy, Navigation, Autoplay, Keyboard } from "swiper";
-const images = [img1, img2, img3, img4, img5];
-const sest10te = [img2, img4, img5];
+import { Lazy, Autoplay, Keyboard, EffectCreative } from "swiper";
 
-export default function Gallery() {
-  const sixties = sest10te.map((src, indeks) => (
-    <SwiperSlide>
-      <img className="picture" src={src} key={indeks} alt="" />
-    </SwiperSlide>
-  ));
+const images = [
+  { src: img1 },
+  { src: img2 },
+  { src: img3 },
+  { src: img4 },
+  { src: img5 },
+];
+
+const Gallery = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/gallery");
+  };
+
   return (
-    <div className="spacer" id="gallery">
-      <h1>Galerija kroz leta</h1>
+    <section
+      id="gallery"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col p-6"
+    >
+      <h1 className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
+        Galerija kroz leta
+      </h1>
       <Swiper
-        className="mySwiper swiper-h"
+        className="h-full w-full"
         keyboard={{
           enabled: true,
         }}
-        spaceBetween={50}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        grabCursor={true}
+        effect={"creative"}
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: ["-125%", 0, -800],
+            rotate: [0, 0, -90],
+          },
+          next: {
+            shadow: true,
+            translate: ["125%", 0, -800],
+            rotate: [0, 0, 90],
+          },
+        }}
+        preloadImages={false}
+        centeredSlides={true}
         lazy={true}
         loop={true}
-        pagination={{
-          clickable: true,
-          type: "progressbar",
-        }}
-        navigation={true}
-        modules={[Pagination, Lazy, Navigation, Keyboard]}
+        modules={[Lazy, Keyboard, Autoplay, EffectCreative]}
       >
-        {images.map((src, index) => (
-          <SwiperSlide>
-            <img
-              className="picture"
-              src={src}
-              key={index}
-              alt={`${index}0 te`}
-            />
-            <br />
-            {index}0 te
+        {images.map((image, i) => (
+          <SwiperSlide
+            key={i}
+            image={image}
+            className="flex items-center justify-center"
+          >
+            <img src={image.src} alt="" className="block object-cover" />
+            {image.id}
           </SwiperSlide>
         ))}
-        <SwiperSlide>
-          <Swiper
-            className="mySwiper swiper-v"
-            direction={"vertical"}
-            keyboard={{
-              enabled: true,
-            }}
-            spaceBetween={50}
-            lazy={true}
-            loop={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            navigation={true}
-            modules={[Pagination, Lazy, Navigation, Keyboard, Autoplay]}
-          >
-            {sixties}
-          </Swiper>
-        </SwiperSlide>
       </Swiper>
-    </div>
+
+      <button
+        className="mt-20 w-48 self-center rounded-xl border border-solid border-slate-900 bg-green-900 p-3 font-semibold text-white hover:bg-green-700 active:bg-green-500 dark:border-none"
+        onClick={handleClick}
+      >
+        Pogledaj Cijelu Galeriju
+      </button>
+    </section>
   );
-}
+};
+
+export default Gallery;

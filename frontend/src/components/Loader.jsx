@@ -2,8 +2,8 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="section-min-height grid place-items-center opacity-100">
-      <svg className="h-1/2">
+    <div className="grid h-screen place-items-center">
+      <svg className="h-[300px] w-[300px]">
         <path
           d="M-15,-15 L15,15"
           className="path"
