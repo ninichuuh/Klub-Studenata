@@ -2,7 +2,6 @@ import React from "react";
 import SectionCard from "./UI/SectionCard";
 
 import { Football, Goats, Creative } from "../../img/images";
-import { Link } from "react-router-dom";
 const sectionsData = [
   {
     id: 1,
