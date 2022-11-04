@@ -1,6 +1,6 @@
 import React from "react";
-import Calendar from "./UI/Calendar";
-import Event from "./UI/Event";
+import Calendar from "../UI/Calendar";
+import Event from "../UI/Event";
 const Events = () => {
   return (
     <section

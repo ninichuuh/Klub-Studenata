@@ -1,7 +1,6 @@
-const User = require("../moders/User");
-const Event = require("../moders/Event");
-const asyncHandler = reuire("express-async-handler");
-const bcrypt = require("bcrypt");
+const User = require("../models/User");
+const Event = require("../models/Event");
+const asyncHandler = require("express-async-handler");
 
 const getAllEvents = asyncHandler(async (req, res) => {
   const events = await Event.find().lean();
@@ -9,10 +8,18 @@ const getAllEvents = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "No events found" });
   }
   res.json(events);
+  const eventsWithUser = await Promise.all(
+    events.map(async (event) => {
+      const user = await User.findById(event.user).lean().exec();
+      return { ...event, username: user.username };
+    })
+  );
+
+  res.json(eventsWithUser);
 });
 
 const createNewEvent = asyncHandler(async (req, res) => {
-  const { user, title, text, date } = req.body;
+  const { title, text, date } = req.body;
   if (!event || !title || !text) {
     return res.status(400).json({ message: "All fields are required" });
   }
@@ -52,43 +59,41 @@ const updateEvent = asyncHandler(async (req, res) => {
     return res.status(409).json({ message: "Duplicate event title" });
   }
 
-  event.user = user
-  event.title= title
-  event.text = text
-  event.date = date
+  event.user = user;
+  event.title = title;
+  event.text = text;
+  event.date = date;
 
-  const updatedEvent = await event.save()
+  const updatedEvent = await event.save();
 
-  res.json(`'${updatedEvent.title}' updated`)
-
-  
+  res.json(`'${updatedEvent.title}' updated`);
 });
 
 const deleteEvent = asyncHandler(async (req, res) => {
-    const { id } = req.body
+  const { id } = req.body;
 
-    // Confirm data
-    if (!id) {
-        return res.status(400).json({ message: 'Event ID required' })
-    }
+  // Confirm data
+  if (!id) {
+    return res.status(400).json({ message: "Event ID required" });
+  }
 
-    // Confirm note exists to delete 
-    const event = await Event.findById(id).exec()
+  // Confirm note exists to delete
+  const event = await Event.findById(id).exec();
 
-    if (!event) {
-        return res.status(400).json({ message: 'Event not found' })
-    }
+  if (!event) {
+    return res.status(400).json({ message: "Event not found" });
+  }
 
-    const result = await Event.deleteOne()
+  const result = await Event.deleteOne();
 
-    const reply = `Event '${result.title}' with ID ${result._id} deleted`
+  const reply = `Event '${result.title}' with ID ${result._id} deleted`;
 
-    res.json(reply)
-})
+  res.json(reply);
+});
 
 module.exports = {
-    getAllEvents,
-    createNewEvent,
-    updateEvent,
-    deleteEvent
-}
+  getAllEvents,
+  createNewEvent,
+  updateEvent,
+  deleteEvent,
+};

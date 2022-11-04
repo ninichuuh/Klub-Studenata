@@ -22,68 +22,64 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
         });
         return eventsAdapter.setAll(initialState, loadedEvents);
       },
-      providesTags: (result,error,arg) => {
-        if(result?.ids) {
-            return [
-                {type: 'Event', id: 'LIST'},
-                ...result.ids.map(id => ({type: 'Event', id}))
-            ]
-        } else return [{type: 'Events', id: 'LIST'}]
-      }
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
+          return [
+            { type: "Event", id: "LIST" },
+            ...result.ids.map((id) => ({ type: "Event", id })),
+          ];
+        } else return [{ type: "Events", id: "LIST" }];
+      },
     }),
     addNewEvent: builder.mutation({
-        query: initialEvent => ({
-            url: '/events',
-            method: 'POST',
-            body: {
-                ...initialEvent,
-            }
-        }),
-        invalidatesTags: [
-            { type: 'Event', id: "LIST" }
-        ]
+      query: (initialEvent) => ({
+        url: "/events",
+        method: "POST",
+        body: {
+          ...initialEvent,
+        },
+      }),
+      invalidatesTags: [{ type: "Event", id: "LIST" }],
     }),
     updateEvent: builder.mutation({
-        query: initialEvent => ({
-            url: '/events',
-            method: 'PATCH',
-            body: {
-                ...initialEvent,
-            }
-        }),
-        invalidatesTags: (result, error, arg) => [
-            { type: 'Event', id: arg.id }
-        ]
+      query: (initialEvent) => ({
+        url: "/events",
+        method: "PATCH",
+        body: {
+          ...initialEvent,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Event", id: arg.id }],
     }),
     deleteEvent: builder.mutation({
-        query: ({ id }) => ({
-            url: `/events`,
-            method: 'DELETE',
-            body: { id }
-        }),
-        invalidatesTags: (result, error, arg) => [
-            { type: 'Event', id: arg.id }
-        ]
+      query: ({ id }) => ({
+        url: `/events`,
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Event", id: arg.id }],
     }),
   }),
 });
 
 export const {
-    useGetEventsQuery,
-    useAddNewEventMutation,
-    useUpdateEventMutation,
-    userDeleteEventMutation
-} = eventsApiSlice
+  useGetEventsQuery,
+  useAddNewEventMutation,
+  useUpdateEventMutation,
+  useDeleteEventMutation,
+} = eventsApiSlice;
 
-export const selectEventsResult = eventsApiSlice.endpoints.getEvents.select()
+export const selectEventsResult = eventsApiSlice.endpoints.getEvents.select();
 
-const selectEventsData = createSelector (
-    selectEventsResult,
-    eventsResult => eventsResult.data
-)
+const selectEventsData = createSelector(
+  selectEventsResult,
+  (eventsResult) => eventsResult.data
+);
 
 export const {
-    selectAll: selectEvents,
-    selectById: selectEventById,
-    selectIds: selectEventIds
-} = eventsAdapter.getSelectors(state => selectEventsData(state) ?? initialState)
+  selectAll: selectEvents,
+  selectById: selectEventById,
+  selectIds: selectEventIds,
+} = eventsAdapter.getSelectors(
+  (state) => selectEventsData(state) ?? initialState
+);

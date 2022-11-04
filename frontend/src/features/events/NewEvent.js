@@ -3,14 +3,13 @@ import { selectAllUsers } from "../users/usersApiSlice";
 import NewEventForm from "./NewEventFrom";
 
 const NewEvent = () => {
-    const users = useSelector(selectAllUsers)
+  const users = useSelector(selectAllUsers);
 
-if (!users?.lenght) return <p>Not Currently Availabla</p>
+  if (!users?.lenght) return <p>Not Currently Availabla</p>;
 
+  const content = <NewEventForm users={users} />;
 
-const content = <NewEventForm users = {users}/>
+  return content;
+};
 
-return content
-}
-
-export default NewEvent
+export default NewEvent;

@@ -1,4 +1,30 @@
+import { useState } from "react";
+
 const Form = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (canSend) {
+      sendFiles();
+    }
+  };
+
+  const [email, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [file, setFile] = useState();
+  const onEmailChanged = (e) => setTitle(e.target.value);
+  const onTextChanged = (e) => setText(e.target.value);
+  const onFileChanged = (e) => setFile(e.target.value);
+  const canSend = [email, text, file].every(Boolean);
+  const sendFiles = async (e) => {
+    const formData = new FormData();
+    const response = await fetch("http://localhost:3500/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const json = await response.json();
+    console.log(json);
+  };
   return (
     <section
       id="contact"
@@ -8,11 +34,12 @@ const Form = () => {
         Javi Nam Se
       </h2>
       <form
-        action=""
-        className="flex flex-col items-center justify-center gap-4 text-2xl sm:text-3xl"
+        onSubmit={handleSubmit}
+        id="uploadForm"
+        className="flex flex-initial flex-col items-center justify-center gap-8 text-2xl sm:text-3xl"
       >
-        <label className="w-3/4 sm:w-3/4">
-          Tvoj email:
+        <label className="w-3/4 font-medium sm:w-3/4">
+          Tvoj email
           <input
             type="email"
             id="email"
@@ -21,21 +48,40 @@ const Form = () => {
             minLength="3"
             cols="30"
             placeholder="hiti.balotu@glova.bs"
-            className="w-full rounded-xl border border-solid border-slate-900 p-3 text-2xl text-black dark:border-none sm:text-3xl"
+            onChange={onEmailChanged}
+            className="mt-2 w-full rounded-xl border border-solid border-slate-900 p-3 text-2xl text-black  hover:shadow-custom focus:outline-none dark:border-none sm:text-3xl"
           />
         </label>
-        <label className="w-3/4 sm:w-3/4">
-          Porukica:
+
+        <label className=" w-3/4 font-medium sm:w-3/4">
+          Porukica
           <textarea
             name="message"
             id="message"
             rows="7.5"
             placeholder="Reci non co lepo i pošalji ko slikico"
             required
-            className="w-full rounded-xl border border-solid border-slate-900 p-3 text-2xl text-black dark:border-none sm:text-3xl"
+            onChange={onTextChanged}
+            className="mt-2 w-full rounded-xl border border-solid border-slate-900 bg-gray-50 p-3 text-2xl text-black  hover:shadow-custom focus:outline-none dark:border-none sm:text-3xl"
           ></textarea>
         </label>
-        <button className="w-48 rounded-xl border border-solid border-slate-900 bg-indigo-700 p-3 text-white hover:bg-indigo-300 active:bg-indigo-500 dark:border-none">
+        <label
+          htmlFor="myFiles"
+          className="mb-2 flex w-3/4 flex-col font-medium text-black dark:text-white sm:w-3/4"
+        >
+          Vaše slike
+          <input
+            type="file"
+            id="myFiles"
+            accept="image/*"
+            title=" "
+            multiple
+            className="mt-2 w-full cursor-pointer rounded-xl border border-slate-900 bg-gray-50 text-center text-white file:mr-5 file:rounded-xl file:border-0 file:bg-green-900 file:py-2 file:font-medium file:text-white hover:shadow-custom hover:file:bg-green-700 focus:outline-none active:file:bg-green-500 dark:border-none dark:text-black"
+            onChange={onFileChanged}
+          />
+        </label>
+
+        <button className="h-20 w-48 self-center rounded-xl border border-solid border-slate-900 bg-green-900 p-3 font-semibold capitalize text-white hover:bg-green-700 active:bg-green-500 dark:border-none">
           {" "}
           Ala Šu!
         </button>

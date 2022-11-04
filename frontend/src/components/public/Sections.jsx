@@ -1,5 +1,5 @@
 import React from "react";
-import SectionCard from "./UI/SectionCard";
+import SectionCard from "../UI/SectionCard";
 
 import { Football, Goats, Creative } from "../../img/images";
 const sectionsData = [

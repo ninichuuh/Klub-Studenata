@@ -1,14 +1,15 @@
-const express = require('express')
-const router = express.Router
-const eventsConstroller = require('../controllers/eventsController')
-const verifyJWT = require('../middleware/verifyJWT')
+const express = require("express");
+const router = express.Router();
+const eventsController = require("../controllers/eventsController");
+const verifyJWT = require("../middleware/verifyJWT");
 
-router.arguments(verifyJWT)
+router.use(verifyJWT);
 
-router.route('/')
-    .get(eventsConstroller.getAllEvents)
-    .get(eventsConstroller.createNewEvent)
-    .get(eventsConstroller.updateEvent)
-    .get(eventsConstroller.deleteEvent)
+router
+  .route("/")
+  .get(eventsController.getAllEvents)
+  .get(eventsController.createNewEvent)
+  .get(eventsController.updateEvent)
+  .get(eventsController.deleteEvent);
 
-    module.exports = router
+module.exports = router;

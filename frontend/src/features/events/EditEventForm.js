@@ -8,10 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 
-const EditEventForm = () => {
+const EditEventForm = ({ event, users }) => {
   const { isManager, isAdmin } = useAuth();
 
-  const [updateEvent, { isLoading, isSucces, isError, error }] =
+  const [updateEvent, { isLoading, isSuccess, isError, error }] =
     useUpdateEventMutation();
 
   const [
@@ -22,6 +22,7 @@ const EditEventForm = () => {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(event.title);
+
   const [text, setText] = useState(event.text);
   const [date, setDate] = useState(event.date);
   const [userId, setUserId] = useState(event.user);
@@ -33,7 +34,7 @@ const EditEventForm = () => {
       setUserId("");
       navigate("dash/events");
     }
-  }, [isSucces, isDelSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate]);
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onTextChanged = (e) => setText(e.target.value);
@@ -52,7 +53,7 @@ const EditEventForm = () => {
     await deleteEvent({ id: event.id });
   };
 
-  const created = new Date(note.createdAt).toLocaleString("en-US", {
+  const created = new Date(event.createdAt).toLocaleString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -60,7 +61,7 @@ const EditEventForm = () => {
     minute: "numeric",
     second: "numeric",
   });
-  const updated = new Date(note.updatedAt).toLocaleString("en-US", {
+  const updated = new Date(event.updatedAt).toLocaleString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
