@@ -4,7 +4,7 @@ import { useAddNewEventMutation } from "./eventsApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 
-const NewEventForm = ({ users }) => {
+const NewEventForm = () => {
   const [addNewEvent, { isLoading, isSuccess, isError, error }] =
     useAddNewEventMutation();
 
@@ -88,6 +88,7 @@ const NewEventForm = ({ users }) => {
           value={text}
           onChange={onTextChanged}
         />
+          
       </form>
     </>
   );
