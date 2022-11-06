@@ -19,20 +19,21 @@ import Events from "../components/public/Events";
 import EventsList from "../features/events/EventsList";
 import EditEvent from "../features/events/EditEvent";
 import NewEventForm from "../features/events/NewEventFrom";
-import Sections from "../components/public/Sections";
-import SectionPage from "../components/public/SectionPage";
-
+import Sections from "../components/sections/Layout";
+import SectionPage from "../components/sections/Hero";
+import { WavyContainer} from "react-wavy-transitions";
 const PublicRouter = () => {
-  return (
+  return (<>
+    <WavyContainer />
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* public routes */}
         <Route index element={<Public />} />
         <Route path="/login" element={<Login />} />
-
-        <Route path="sections">
+        
+        <Route path="sections" >
           <Route index element={<Sections />} />
-          <Route path=":id" element={<SectionPage />} />
+          <Route path=":id" element={<SectionPage id={Route.path}/>} />
         </Route>
         <Route path="events">
           <Route index element={<Events />} />
@@ -77,7 +78,7 @@ const PublicRouter = () => {
         </Route>
         {/* End Protected Routes */}
       </Route>
-    </Routes>
+    </Routes></>
   );
 };
 export default PublicRouter;

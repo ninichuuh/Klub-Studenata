@@ -2,12 +2,16 @@ const User = require("../models/User");
 const Event = require("../models/Event");
 const asyncHandler = require("express-async-handler");
 
+// @desc Get all notes
+// @route GET /notes
+// @access Private
 const getAllEvents = asyncHandler(async (req, res) => {
+    // Get all notes from MongoDB
   const events = await Event.find().lean();
   if (!events?.lenght) {
     return res.status(400).json({ message: "No events found" });
   }
-  res.json(events);
+
   const eventsWithUser = await Promise.all(
     events.map(async (event) => {
       const user = await User.findById(event.user).lean().exec();
