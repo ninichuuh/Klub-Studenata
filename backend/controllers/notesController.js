@@ -1,8 +1,7 @@
 const Note = require("../models/Note");
 const User = require("../models/User");
 
-// @desc Get all notes
-// @route GET /notes
+
 // @access Private
 const getAllNotes = async (req, res) => {
   // Get all notes from MongoDB
@@ -27,7 +26,7 @@ const getAllNotes = async (req, res) => {
 };
 
 // @desc Create new note
-// @route POST /notes
+
 // @access Private
 const createNewNote = async (req, res) => {
   const { user, title, text } = req.body;
@@ -59,7 +58,7 @@ const createNewNote = async (req, res) => {
 };
 
 // @desc Update a note
-// @route PATCH /notes
+
 // @access Private
 const updateNote = async (req, res) => {
   const { id, user, title, text, completed } = req.body;
@@ -98,7 +97,6 @@ const updateNote = async (req, res) => {
 };
 
 // @desc Delete a note
-// @route DELETE /notes
 // @access Private
 const deleteNote = async (req, res) => {
   const { id } = req.body;

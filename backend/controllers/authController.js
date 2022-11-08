@@ -15,12 +15,12 @@ const login = async (req, res) => {
   const foundUser = await User.findOne({ username }).exec();
 
   if (!foundUser || !foundUser.active) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized foundUSer" });
   }
 
   const match = await bcrypt.compare(password, foundUser.password);
 
-  if (!match) return res.status(401).json({ message: "Unauthorized" });
+  if (!match) return res.status(401).json({ message: "Unauthorized foundmatch" });
 
   const accessToken = jwt.sign(
     {
@@ -57,7 +57,7 @@ const login = async (req, res) => {
 const refresh = (req, res) => {
   const cookies = req.cookies;
 
-  if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });
+  if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized cookies" });
 
   const refreshToken = cookies.jwt;
 
@@ -71,7 +71,7 @@ const refresh = (req, res) => {
         username: decoded.username,
       }).exec();
 
-      if (!foundUser) return res.status(401).json({ message: "Unauthorized" });
+      if (!foundUser) return res.status(401).json({ message: "Unauthorized jwt" });
 
       const accessToken = jwt.sign(
         {

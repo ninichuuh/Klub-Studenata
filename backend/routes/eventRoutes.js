@@ -8,8 +8,8 @@ router.use(verifyJWT);
 router
   .route("/")
   .get(eventsController.getAllEvents)
-  .get(eventsController.createNewEvent)
-  .get(eventsController.updateEvent)
-  .get(eventsController.deleteEvent);
+  .post(eventsController.createNewEvent)
+  .patch(eventsController.updateEvent)
+  .delete(eventsController.deleteEvent);
 
 module.exports = router;
