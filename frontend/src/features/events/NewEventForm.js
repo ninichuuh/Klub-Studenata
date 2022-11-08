@@ -4,7 +4,7 @@ import { useAddNewEventMutation } from "./eventsApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 
-const NewEventForm = () => {
+const NewEventForm = ({ users }) => {
   const [addNewEvent, { isLoading, isSuccess, isError, error }] =
     useAddNewEventMutation();
 
@@ -12,30 +12,38 @@ const NewEventForm = () => {
 
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [date, setDate] = useState("");
+  const [userId, setUserId] = useState(users[0].id);
 
   useEffect(() => {
     if (isSuccess) {
       setTitle("");
       setText("");
-      setDate("");
-
+      setUserId("");
       navigate("/dash/events");
     }
   }, [isSuccess, navigate]);
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onTextChanged = (e) => setText(e.target.value);
-  const onDateChanged = (e) => setDate(e.target.value);
+  const onUserIdChanged = (e) => setUserId(e.target.value);
 
-  const canSave = [title, text, date].every(Boolean) && !isLoading;
+  const canSave = [title, text, userId].every(Boolean) && !isLoading;
 
   const onSaveEventClicked = async (e) => {
     e.preventDefault();
     if (canSave) {
-      await addNewEvent({ date, title, text });
+      await addNewEvent({ user: userId, title, text });
     }
   };
+
+  const options = users.map((user) => {
+    return (
+      <option key={user.id} value={user.id}>
+        {" "}
+        {user.username}
+      </option>
+    );
+  });
 
   const errClass = isError ? "errmsg" : "offscreen";
   const validTitleClass = !title ? "form__input--incomplete" : "";
@@ -66,18 +74,6 @@ const NewEventForm = () => {
           value={title}
           onChange={onTitleChanged}
         />
-        <label className="form__label" htmlFor="date">
-          Date:
-        </label>
-        <input
-          className={`form__input ${validTitleClass}`}
-          id="date"
-          name="date"
-          type="date"
-          autoComplete="off"
-          value={date}
-          onChange={onDateChanged}
-        />
 
         <label className="form__label" htmlFor="text">
           Text:
@@ -89,6 +85,22 @@ const NewEventForm = () => {
           value={text}
           onChange={onTextChanged}
         />
+
+        <label
+          className="form__label form__checkbox-container"
+          htmlFor="username"
+        >
+          ASSIGNED TO:
+        </label>
+        <select
+          id="username"
+          name="username"
+          className="form__select"
+          value={userId}
+          onChange={onUserIdChanged}
+        >
+          {options}
+        </select>
       </form>
     </>
   );

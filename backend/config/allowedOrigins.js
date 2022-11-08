@@ -1,7 +1,7 @@
 const allowedOrigins = [
-    'http://localhost:3000',
-    'https://www.ksimb.hr',
-    'https://ksibm.hr'
-]
+  "http://localhost:3000",
+  "http://www.ksimb.hr",
+  "http://ksimb.hr"
+];
 
-module.exports = allowedOrigins
+module.exports = allowedOrigins;

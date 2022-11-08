@@ -54,7 +54,6 @@ app.post(
   fileSizeLimiter,
   (req, res) => {
     const files = req.files;
-    console.log(files);
 
     Object.keys(files).forEach((key) => {
       const filepath = path.join(__dirname, "files", files[key].name);
@@ -65,7 +64,7 @@ app.post(
 
     return res.json({
       status: "success",
-      message: Object.keys(files).toString(),
+      message: Object.keys(files).toString()
     });
   }
 );

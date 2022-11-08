@@ -1,22 +1,20 @@
 import { store } from "../../app/store";
-import { usersApiSlice } from "../users/usersApiSlice";
 import { notesApiSlice } from "../notes/notesApiSlice";
+import { usersApiSlice } from "../users/usersApiSlice";
+import { eventsApiSlice } from "../events/eventsApiSlice";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { eventsApiSlice } from "../events/eventsApiSlice";
 const Prefetch = () => {
   useEffect(() => {
-    console.log("subscribing");
-    const notes = store.dispatch(notesApiSlice.endpoints.getNotes.initiate());
-    const events = store.dispatch(eventsApiSlice.endpoints.getEvents.initiate());
-    const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
-
-    return () => {
-      console.log("unsubscribing");
-      notes.unsubscribe();
-      users.unsubscribe();
-      events.unsubscribe();
-    };
+    store.dispatch(
+      notesApiSlice.util.prefetch("getNotes", "notesList", { force: true })
+    );
+    store.dispatch(
+      usersApiSlice.util.prefetch("getUsers", "usersList", { force: true })
+    );
+    store.dispatch(
+      eventsApiSlice.util.prefetch("getEvents", "eventsList", { force: true })
+    );
   }, []);
 
   return <Outlet />;

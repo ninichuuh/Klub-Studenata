@@ -1,12 +1,11 @@
 const Note = require("../models/Note");
 const User = require("../models/User");
 
-
 // @access Private
 const getAllNotes = async (req, res) => {
   // Get all notes from MongoDB
   const notes = await Note.find().lean();
-
+  console.table(notes);
   // If no notes
   if (!notes?.length) {
     return res.status(400).json({ message: "No notes found" });
@@ -48,7 +47,7 @@ const createNewNote = async (req, res) => {
 
   // Create and store the new user
   const note = await Note.create({ user, title, text });
-console.log(note)
+  console.log(note);
   if (note) {
     // Created
     return res.status(201).json({ message: "New note created" });
@@ -124,5 +123,5 @@ module.exports = {
   getAllNotes,
   createNewNote,
   updateNote,
-  deleteNote,
+  deleteNote
 };

@@ -1,33 +1,44 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectEventById } from "./eventsApiSlice";
+import { useGetEventsQuery } from "./eventsApiSlice";
+import { memo } from "react";
 
 const Event = ({ eventId }) => {
-  const event = useSelector((state) => selectEventById(state, eventId));
+  const { event } = useGetEventsQuery("eventsList", {
+    selectFromResult: ({ data }) => ({
+      event: data?.entities[eventId]
+    })
+  });
 
   const navigate = useNavigate();
 
   if (event) {
-    const created = new Date(event.createdAt).toLocaleDateString("en-US", {
+    const created = new Date(event.createdAt).toLocaleString("en-US", {
       day: "numeric",
-      mont: "long",
+      month: "long"
     });
 
     const updated = new Date(event.updatedAt).toLocaleString("en-US", {
       day: "numeric",
-      month: "long",
+      month: "long"
     });
 
     const handleEdit = () => navigate(`/dash/events/${eventId}`);
 
     return (
       <tr className="table__row">
-        <td className="">{created}</td>
-        <td className="">{updated}</td>
-        <td className="">{event.title}</td>
-        <td className="">{event.text}</td>
+        <td className="table__cell event__status">
+          {event.completed ? (
+            <span className="event__status--completed">Completed</span>
+          ) : (
+            <span className="event__status--open">Open</span>
+          )}
+        </td>
+        <td className="table__cell event__created">{created}</td>
+        <td className="table__cell event__updated">{updated}</td>
+        <td className="table__cell event__title">{event.title}</td>
+        <td className="table__cell event__username">{event.username}</td>
 
         <td className="table__cell">
           <button className="icon-button table__button" onClick={handleEdit}>
@@ -36,7 +47,9 @@ const Event = ({ eventId }) => {
         </td>
       </tr>
     );
-  } else return <div>ovo treba biti oevent</div>;
+  } else return null;
 };
 
-export default Event   
+const memoizedEvent = memo(Event);
+
+export default memoizedEvent;

@@ -1,13 +1,15 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
-
 import usePersist from "../../hooks/usePersist";
+import useTitle from "../../hooks/useTitle";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Login = () => {
+  useTitle("Employee Login");
+
   const userRef = useRef();
   const errRef = useRef();
   const [username, setUsername] = useState("");
@@ -42,7 +44,7 @@ const Login = () => {
       } else if (err.status === 400) {
         setErrMsg("Missing Username or Password");
       } else if (err.status === 401) {
-        setErrMsg("Unauthorized pas mater");
+        setErrMsg("Unauthorized");
       } else {
         setErrMsg(err.data?.message);
       }
@@ -56,56 +58,46 @@ const Login = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen";
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <PulseLoader color={"#FFF"} />;
 
   const content = (
-    <section
-      id="public"
-      className="widescreen:section-min-height tallscreen:section-min-height section-min-height flex grow flex-col flex-nowrap gap-4"
-    >
+    <section className="">
       <header>
-        <h1>Članska Prijava</h1>
+        <h1>Employee Login</h1>
       </header>
-      <main className="border-y-2">
+      <main className="">
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p>
 
-        <form
-          className="items-left flex max-w-4xl flex-col items-center gap-4 text-2xl sm:text-3xl"
-          onSubmit={handleSubmit}
-        >
-          <label htmlFor="username">Korisničko ime:</label>
+        <form className="" onSubmit={handleSubmit}>
+          <label htmlFor="username">Username:</label>
           <input
-            className="w-full rounded-xl border border-solid border-red-900 p-3 text-2xl text-black dark:border-red-300 sm:text-3xl"
+            className="form__input"
             type="text"
-            placeholder="istrijan"
             id="username"
             ref={userRef}
             value={username}
             onChange={handleUserInput}
             autoComplete="off"
-            cols="30"
             required
           />
 
           <label htmlFor="password">Password:</label>
-          <label className="text-sm" htmlFor="password">Ima 3 broja u 8 znakova, ko Y</label>
           <input
-            className="w-full rounded-xl border border-solid border-slate-900 p-3 text-2xl text-black dark:border-red-300 sm:text-3xl"
+            className=""
             type="password"
-            placeholder=""
             id="password"
             onChange={handlePwdInput}
             value={password}
             required
           />
-          <button className="border-8">Prijavi se</button>
+          <button className="">Sign In</button>
 
-          <label htmlFor="persist" className="flex w-full items-center gap-2">
+          <label htmlFor="persist" className="">
             <input
               type="checkbox"
-              className="h-6 w-6"
+              className=""
               id="persist"
               onChange={handleToggle}
               checked={persist}

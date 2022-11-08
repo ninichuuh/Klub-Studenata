@@ -28,7 +28,7 @@ const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col p-6"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col gap-8 p-6"
     >
       <h1 className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
         Galerija kroz leta
@@ -75,7 +75,7 @@ const Gallery = () => {
       </Swiper>
 
       <button
-        className="mt-20 h-20 w-48 self-center rounded-xl border border-solid border-slate-900 bg-green-900 p-3  font-semibold capitalize text-white hover:bg-green-700 active:bg-green-500 dark:border-none"
+        className="h-20 w-48 self-center rounded-xl border border-solid border-slate-900 bg-green-900 p-3 text-2xl font-semibold text-white hover:bg-green-700 hover:shadow-custom active:bg-green-500 dark:border-none"
         onClick={handleClick}
       >
         Cijela Galerija

@@ -1,21 +1,20 @@
 const User = require("../models/User");
 const Event = require("../models/Event");
 
-
 // @access Private
 const getAllEvents = async (req, res) => {
   // Get all events from MongoDB
-const events = await Event.find().lean();
-console.log(!events?.lenght)
+  const events = await Event.find().lean();
+  console.table(events);
   if (!events?.lenght) {
     return res.status(400).json({ message: "No events found controller" });
   }
-res.json(events)
-}
+  res.json(events);
+};
 
 const createNewEvent = async (req, res) => {
   const { title, text, date } = req.body;
-  if (!date || !title || !text ) {
+  if (!date || !title || !text) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -94,5 +93,5 @@ module.exports = {
   getAllEvents,
   createNewEvent,
   updateEvent,
-  deleteEvent,
+  deleteEvent
 };

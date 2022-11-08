@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Note = require("../models/Note");
-const Event = require("../models/Event")
+const Event = require("../models/Event");
 const bcrypt = require("bcrypt");
 
 // @desc Get all users
@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const getAllUsers = async (req, res) => {
   // Get all users from MongoDB
   const users = await User.find().select("-password").lean();
-
+  console.table(users);
   // If no users
   if (!users?.length) {
     return res.status(400).json({ message: "No users found" });
@@ -149,5 +149,5 @@ module.exports = {
   getAllUsers,
   createNewUser,
   updateUser,
-  deleteUser,
+  deleteUser
 };
