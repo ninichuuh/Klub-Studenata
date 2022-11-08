@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
 import { useSelector } from "react-redux";
 import { selectEventById } from "./eventsApiSlice";
 
@@ -25,17 +24,10 @@ const Event = ({ eventId }) => {
 
     return (
       <tr className="table__row">
-        <td className="table__cell note__status">
-          {event.completed ? (
-            <span className="note__status--completed">Completed</span>
-          ) : (
-            <span className="note__status--open">Open</span>
-          )}
-        </td>
-        <td className="table__cell note__created">{created}</td>
-        <td className="table__cell note__updated">{updated}</td>
-        <td className="table__cell note__title">{event.title}</td>
-        <td className="table__cell note__username">{event.username}</td>
+        <td className="">{created}</td>
+        <td className="">{updated}</td>
+        <td className="">{event.title}</td>
+        <td className="">{event.text}</td>
 
         <td className="table__cell">
           <button className="icon-button table__button" onClick={handleEdit}>
@@ -44,7 +36,7 @@ const Event = ({ eventId }) => {
         </td>
       </tr>
     );
-  } else return null;
+  } else return <div>ovo treba biti oevent</div>;
 };
 
 export default Event   

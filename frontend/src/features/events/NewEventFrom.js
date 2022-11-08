@@ -19,6 +19,7 @@ const NewEventForm = () => {
       setTitle("");
       setText("");
       setDate("");
+
       navigate("/dash/events");
     }
   }, [isSuccess, navigate]);
@@ -88,7 +89,6 @@ const NewEventForm = () => {
           value={text}
           onChange={onTextChanged}
         />
-          
       </form>
     </>
   );

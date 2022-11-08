@@ -1,11 +1,8 @@
 import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice";
 
-const eventsAdapter = createEntityAdapter({
-  sortComparer: (a, b) =>
-    a.completed === b.completed ? 0 : a.completed ? 1 : -1,
-});
-
+const eventsAdapter = createEntityAdapter({});
+console.log(eventsAdapter);
 const initialState = eventsAdapter.getInitialState();
 
 export const eventsApiSlice = apiSlice.injectEndpoints({
@@ -20,6 +17,7 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
           event.id = event._id;
           return event;
         });
+
         return eventsAdapter.setAll(initialState, loadedEvents);
       },
       providesTags: (result, error, arg) => {
@@ -28,7 +26,7 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
             { type: "Event", id: "LIST" },
             ...result.ids.map((id) => ({ type: "Event", id })),
           ];
-        } else return [{ type: "Events", id: "LIST" }];
+        } else return [{ type: "Event", id: "LIST" }];
       },
     }),
     addNewEvent: builder.mutation({
@@ -77,7 +75,7 @@ const selectEventsData = createSelector(
 );
 
 export const {
-  selectAll: selectEvents,
+  selectAll: selectAllEvents,
   selectById: selectEventById,
   selectIds: selectEventIds,
 } = eventsAdapter.getSelectors(

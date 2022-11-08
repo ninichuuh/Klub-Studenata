@@ -1,30 +1,21 @@
 const User = require("../models/User");
 const Event = require("../models/Event");
 
-// @desc Get all events
-// @route GET /events
+
 // @access Private
 const getAllEvents = async (req, res) => {
-  // Get all notes from MongoDB
-  const events = await Event.find().lean();
-
+  // Get all events from MongoDB
+const events = await Event.find().lean();
+console.log(!events?.lenght)
   if (!events?.lenght) {
-    return res.status(400).json({ message: "No events found" });
+    return res.status(400).json({ message: "No events found controller" });
   }
-
-  const eventsWithUser = await Promise.all(
-    events.map(async (event) => {
-      const user = await User.findById(event.user).lean().exec();
-      return { ...event, username: user.username };
-    })
-  );
-
-  res.json(eventsWithUser);
-};
+res.json(events)
+}
 
 const createNewEvent = async (req, res) => {
-  const { title, text, date, user } = req.body;
-  if (!event || !title || !text || !user) {
+  const { title, text, date } = req.body;
+  if (!date || !title || !text ) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -36,7 +27,7 @@ const createNewEvent = async (req, res) => {
   if (duplicate) {
     return res.status(409).json({ message: "Duplicate event" });
   }
-  const event = await Event.create({ user, title, text, date });
+  const event = await Event.create({ title, text, date });
 
   if (event) {
     //created
@@ -45,8 +36,7 @@ const createNewEvent = async (req, res) => {
 };
 
 const updateEvent = async (req, res) => {
-  const { id, user, title, text, date } = req.body;
-
+  const { id, title, text, date } = req.body;
   // Confirm data
   if (!id || !user || !title || !text) {
     return res.status(400).json({ message: "All fields are required" });
@@ -69,7 +59,6 @@ const updateEvent = async (req, res) => {
     return res.status(409).json({ message: "Duplicate event title" });
   }
 
-  event.user = user;
   event.title = title;
   event.text = text;
   event.date = date;
@@ -98,7 +87,7 @@ const deleteEvent = async (req, res) => {
 
   const reply = `Event '${result.title}' with ID ${result._id} deleted`;
 
-  res.json(reply);
+  res.json(raeply);
 };
 
 module.exports = {

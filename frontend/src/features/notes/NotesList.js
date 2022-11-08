@@ -2,6 +2,7 @@ import { useGetNotesQuery } from "./notesApiSlice"
 import Note from "./Note"
 import useAuth from "../../hooks/useAuth"
 
+
 const NotesList = () => {
 
     const { username, isManager, isAdmin } = useAuth()

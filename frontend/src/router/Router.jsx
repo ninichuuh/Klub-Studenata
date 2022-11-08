@@ -22,6 +22,7 @@ import NewEventForm from "../features/events/NewEventFrom";
 import Sections from "../components/sections/Layout";
 import SectionPage from "../components/sections/Hero";
 import { WavyContainer} from "react-wavy-transitions";
+import Test from "../features/events/Event"
 const PublicRouter = () => {
   return (<>
     <WavyContainer />
@@ -30,6 +31,7 @@ const PublicRouter = () => {
         {/* public routes */}
         <Route index element={<Public />} />
         <Route path="/login" element={<Login />} />
+      <Route path="/test" element={<Test/>}/>
         
         <Route path="sections" >
           <Route index element={<Sections />} />

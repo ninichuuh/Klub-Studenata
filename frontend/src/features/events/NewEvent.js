@@ -11,5 +11,4 @@ const NewEvent = () => {
 
   return content;
 };
-
 export default NewEvent;
