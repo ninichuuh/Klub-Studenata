@@ -7,7 +7,7 @@ import {
   faCalendarPlus,
   faUserGear,
   faUserPlus,
-  faRightFromBracket,
+  faRightFromBracket
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 
@@ -141,15 +141,13 @@ const DashHeader = () => {
     <>
       <p className={errClass}>{error?.data?.message}</p>
 
-      <header className="row flex h-1/5 bg-green-900 justify-evenly items-end">
+      <header className="row flex h-[10vh] items-center justify-evenly bg-green-900">
         <div className={`dash-header__container ${dashClass}`}>
           <Link to="/dash">
-            <h1 className="dash-header__title">
-              Klub Studenata Istre Mate Balota
-            </h1>
+            <h1 className="text-2xl">Klub Studenata Istre Mate Balota</h1>
           </Link>
         </div>
-        
+
         <nav className="flex flex-row gap-2">{buttonContent}</nav>
       </header>
     </>

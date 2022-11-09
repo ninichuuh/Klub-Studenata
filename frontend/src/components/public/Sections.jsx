@@ -2,11 +2,11 @@ import React from "react";
 import SectionCard from "../UI/SectionCard";
 import sectionData from "../sections/sectionsData";
 
-const sectionsData = sectionData
+const sectionsData = sectionData;
 
 const Sections = () => {
   const sections = sectionsData.map((section) => (
-    <a href={`sections/${section.id}`}>
+    <a href="sections">
       <SectionCard
         key={section.id}
         img={section.imgSrc}

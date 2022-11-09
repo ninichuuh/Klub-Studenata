@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "../components/Layout";
 import Public from "../components/public/Public";
 import DashLayout from "../components/DashLayout";
-import Login from "../features/auth/Login2";
+import Login from "../features/auth/Login";
 import Welcome from "../features/auth/Welcome";
 import NotesList from "../features/notes/NotesList";
 import UsersList from "../features/users/UsersList";
@@ -33,7 +33,7 @@ const PublicRouter = () => {
 
           <Route path="sections">
             <Route index element={<Sections />} />
-            <Route path=":id" element={<SectionPage id={Route.path} />} />
+            <Route path="#:id" element={<SectionPage />} />
           </Route>
 
           {/* Protected Routes */}
@@ -61,8 +61,8 @@ const PublicRouter = () => {
 
                   <Route path="events">
                     <Route index element={<EventsList />} />
-                    <Route path=":id" element={<EditEvent/>}/>
-                    <Route path="new" element={<NewEvent/>}/>
+                    <Route path=":id" element={<EditEvent />} />
+                    <Route path="new" element={<NewEvent />} />
                   </Route>
 
                   <Route path="notes">

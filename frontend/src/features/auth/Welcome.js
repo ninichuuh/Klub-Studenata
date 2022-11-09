@@ -14,7 +14,7 @@ const Welcome = () => {
   }).format(date);
 
   const content = (
-    <section className="h-3/4">
+    <section className="">
       <p>{today}</p>
 
       <h1>Welcome {username}!</h1>
