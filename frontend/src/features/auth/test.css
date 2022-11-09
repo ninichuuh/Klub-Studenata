@@ -1,0 +1,83 @@
+* 10/12 base rules are converted successfully. */
+/* Gather results from the console with `copy(window.cssToTailwindResults)` */
+
+/* ℹ️ Base selector: body */
+/* ✨ TailwindCSS: "bg-no-repeat bg-cover grid place-items-center m-0" */
+/* ⚠️ Some properties could not be matched with Tailwind classes. Use @apply to extend a CSS rule: */
+body {
+  @apply bg-no-repeat bg-cover grid place-items-center m-0;
+  background-image: url(background.svg);
+  font-family: "Euclid Circular A";
+  color: rgba(58, 51, 78, 1);
+  animation: rotate 1s infinite alternate linear;
+}
+
+/* ℹ️ Base selector: button */
+/* ✨ TailwindCSS: "bg-transparent border-0 cursor-pointer" */
+
+/* ℹ️ Base selector: .control */
+/* ✨ TailwindCSS: "rounded-lg border-0 h-12 text-base py-0 px-4 w-full" */
+/* ⚠️ Some properties could not be matched with Tailwind classes. Use @apply to extend a CSS rule: */
+.control {
+  @apply rounded-lg border-0 h-12 text-base py-0 px-4 w-full;
+  outline: none;
+  background-color: rgba(237, 234, 247, 1);
+  color: rgba(90, 79, 121, 1);
+  font-family: inherit;
+  transition: 0.4s;
+}
+
+/* ℹ️ Base selector: .login-card */
+/* ✨ TailwindCSS: "bg-white px-8 pb-16 pt-24 text-center" */
+/* ⚠️ Some properties could not be matched with Tailwind classes. Use @apply to extend a CSS rule: */
+.login-card {
+  @apply bg-white px-8 pb-16 pt-24 text-center;
+  width: 400px;
+  border-radius: 20px;
+}
+
+/* ℹ️ Base selector: .login-card > h2 */
+/* ✨ TailwindCSS: "font-semibold text-4xl mx-0 mt-0 mb-1" */
+
+/* ℹ️ Base selector: .login-card > h3 */
+/* ✨ TailwindCSS: "font-medium text-base mx-0 mt-0 mb-10" */
+/* ⚠️ Some properties could not be matched with Tailwind classes. Use @apply to extend a CSS rule: */
+.login-card > h3 {
+  @apply font-medium text-base mx-0 mt-0 mb-10;
+  color: rgba(131, 127, 144, 1);
+}
+
+/* ℹ️ Base selector: .login-form */
+/* ✨ TailwindCSS: "grid m-0 w-full gap-4" */
+
+/* ℹ️ Base selector: .login-form > button.control */
+/* ✨ TailwindCSS: "border-0 cursor-pointer font-semibold h-12 text-base py-0 px-4 text-center w-full" */
+/* ⚠️ Some properties could not be matched with Tailwind classes. Use @apply to extend a CSS rule: */
+.login-form > button.control {
+  @apply border-0 cursor-pointer font-semibold h-12 text-base py-0 px-4 text-center w-full;
+  background-color: rgba(112, 62, 255, 1);
+  color: rgba(249, 249, 249, 1);
+  font-family: inherit;
+  letter-spacing: 2px;
+  transition: all 0.375s;
+}
+
+/* ℹ️ Base selector: .password */
+/* ✨ TailwindCSS: "relative" */
+
+/* ℹ️ Base selector: .toggle */
+/* ✨ TailwindCSS: "bg-center bg-no-repeat h-8 absolute w-8" */
+/* ⚠️ Some properties could not be matched with Tailwind classes. Use @apply to extend a CSS rule: */
+.toggle {
+  @apply bg-center bg-no-repeat h-8 absolute w-8;
+  top: 50%;
+  right: 16px;
+  background-image: url(show.svg);
+  background-size: 85%;
+}
+
+/* ℹ️ Base selector: .toggle.showing */
+/* ❌ Could not match any TailwindCSS classes. */
+
+/* ℹ️ Base selector: .login-form input.control */
+/* ❌ Could not match any TailwindCSS classes. */
