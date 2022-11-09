@@ -3,6 +3,11 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const eventSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     title: {
       type: String,
       required: true,
@@ -11,9 +16,9 @@ const eventSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    date: {
-      type: Date,
-      required: true,
+    completed: {
+      type: Boolean,
+      default: false,
     },
   },
   {
@@ -24,7 +29,7 @@ const eventSchema = new mongoose.Schema(
 eventSchema.plugin(AutoIncrement, {
   inc_field: "event",
   id: "eventNums",
-  start_seq: 103,
+  start_seq: 100,
 });
 
 module.exports = mongoose.model("Event", eventSchema);

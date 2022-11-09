@@ -26,9 +26,9 @@ const DashFooter = () => {
     }
 
     const content = (
-        <footer className="dash-footer">
-            {goHomeButton}
+        <footer className="h-1/10 bg-green-900 flex flex-row-reverse justify-evenly">
             <p>Current User: {username}</p>
+            {goHomeButton}
             <p>Status: {status}</p>
         </footer>
     )

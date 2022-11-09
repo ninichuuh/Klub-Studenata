@@ -10,7 +10,7 @@ const User = ({ userId }) => {
       user: data?.entities[userId]
     })
   });
-  console.log(userId);
+ 
   const navigate = useNavigate();
 
   if (user) {

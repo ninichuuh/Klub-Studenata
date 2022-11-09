@@ -31,7 +31,7 @@ const UsersList = () => {
 
     const tableContent =
       ids?.length && ids.map((userId) => <User key={userId} userId={userId} />);
-
+console.log({ids})
     content = (
       <table className="table--users table">
         <thead className="table__thead">

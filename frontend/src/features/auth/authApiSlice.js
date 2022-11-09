@@ -24,7 +24,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
                         dispatch(apiSlice.util.resetApiState())
                     }, 1000)
                 } catch (err) {
-                    console.log(err)
+                    console.log(err+ "ovjde puca")
                 }
             }
         }),
@@ -40,7 +40,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
                     const { accessToken } = data
                     dispatch(setCredentials({ accessToken }))
                 } catch (err) {
-                    console.log(err)
+                    console.log(err+ "ovdje puca??")
                 }
             }
         }),

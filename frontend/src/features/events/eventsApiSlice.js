@@ -14,10 +14,10 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: "/events",
         validateStatus: (response, result) => {
-          return response.status === 200 && !result.isError;
-        }
+          return response.status === 200 && !result.isError
+      },
       }),
-      transformResponse: (responseData) => {
+      transformResponse: responseData => {
         const loadedEvents = responseData.map((event) => {
           event.id = event._id;
           return event;

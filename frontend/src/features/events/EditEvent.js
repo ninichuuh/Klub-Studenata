@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import EditNoteForm from "./EditNoteForm";
+import EditEventForm from "./EditEventForm";
 import { useGetEventsQuery } from "./eventsApiSlice";
 import { useGetUsersQuery } from "../users/usersApiSlice";
 import useAuth from "../../hooks/useAuth";
 import PulseLoader from "react-spinners/PulseLoader";
 import useTitle from "../../hooks/useTitle";
 
-const EditNote = () => {
+const EditEvent = () => {
   useTitle("techEvents: Edit event");
 
   const { id } = useParams();
@@ -33,8 +33,8 @@ const EditNote = () => {
     }
   }
 
-  const content = <EditNoteForm event={event} users={users} />;
+  const content = <EditEventForm event={event} users={users} />;
 
   return content;
 };
-export default EditNote;
+export default EditEvent;

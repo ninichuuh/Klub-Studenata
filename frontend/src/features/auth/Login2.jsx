@@ -7,7 +7,7 @@ import usePersist from "../../hooks/usePersist";
 import useTitle from "../../hooks/useTitle";
 import PulseLoader from "react-spinners/PulseLoader";
 
-const Login = () => {
+const Login2 = () => {
   useTitle("Employee Login");
 
   const userRef = useRef();
@@ -69,32 +69,38 @@ const Login = () => {
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p>
-
-        <form className="" onSubmit={handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input
-            className="form__input"
-            type="text"
-            id="username"
-            ref={userRef}
-            value={username}
-            onChange={handleUserInput}
-            autoComplete="off"
-            required
-          />
-
-          <label htmlFor="password">Password:</label>
-          <input
-            className=""
-            type="password"
-            id="password"
-            onChange={handlePwdInput}
-            value={password}
-            required
-          />
-          <button className="">Sign In</button>
-
-          <label htmlFor="persist" className="">
+        <div>
+          <form className="bg-white grid place-items-center items-[rgba(58,51,78,1)] m-0" onSubmit={handleSubmit}>
+            <input
+              spellcheck="false"
+              className="rounded-lg bg-[rgba(237,234,247,1)] items-[rgba(90, 79, 121, 1)] border-0 h-12 text-base py-0 px-4 w-full"
+              id="username"
+              type="text"
+              placeholder="Username"
+              ref={userRef}
+              value={username}
+              onChange={handleUserInput}
+              autoComplete="off"
+              required
+            />
+            <div className="password">
+              <input
+                spellcheck="false"
+                className="control"
+                id="password"
+                type="password"
+                onChange={handlePwdInput}
+                value={password}
+                placeholder="Password"
+                required
+              />
+              <button
+                className="toggle"
+                type="button"
+                onclick="togglePassword(this)"
+              ></button>
+            </div>
+            <label htmlFor="persist" className="">
             <input
               type="checkbox"
               className=""
@@ -104,7 +110,9 @@ const Login = () => {
             />
             Trust This Device
           </label>
-        </form>
+            <button className="control">LOGIN</button>
+          </form>
+        </div>
       </main>
       <footer>
         <Link to="/">Back to Home</Link>
@@ -114,4 +122,4 @@ const Login = () => {
 
   return content;
 };
-export default Login;
+export default Login2;

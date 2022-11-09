@@ -6,7 +6,7 @@ const DashLayout = () => {
     return (
         <>
             <DashHeader />
-            <div className="dash-container">
+            <div className="bg-black text-white">
                 <Outlet />
             </div>
             <DashFooter />

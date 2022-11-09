@@ -14,7 +14,7 @@ const Welcome = () => {
   }).format(date);
 
   const content = (
-    <section className="welcome">
+    <section className="h-3/4">
       <p>{today}</p>
 
       <h1>Welcome {username}!</h1>
@@ -30,7 +30,7 @@ const Welcome = () => {
         <Link to="/dash/events">View Events</Link>
       </p>
       <p>
-        <Link to="/dash/event/new">Add New Event</Link>
+        <Link to="/dash/events/new">Add New Event</Link>
       </p>
 
       {(isManager || isAdmin) && (

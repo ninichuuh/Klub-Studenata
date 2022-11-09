@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "../components/Layout";
 import Public from "../components/public/Public";
 import DashLayout from "../components/DashLayout";
-import Login from "../features/auth/Login";
+import Login from "../features/auth/Login2";
 import Welcome from "../features/auth/Welcome";
 import NotesList from "../features/notes/NotesList";
 import UsersList from "../features/users/UsersList";
@@ -10,6 +10,8 @@ import EditUser from "../features/users/EditUser";
 import NewUserForm from "../features/users/NewUserForm";
 import EditNote from "../features/notes/EditNote";
 import NewNote from "../features/notes/NewNote";
+import EditEvent from "../features/events/EditEvent";
+import NewEvent from "../features/events/NewEvent";
 import Prefetch from "../features/auth/Prefetch";
 import PersistLogin from "../features/auth/PersistLogin";
 import RequireAuth from "../features/auth/RequireAuth";
@@ -59,6 +61,8 @@ const PublicRouter = () => {
 
                   <Route path="events">
                     <Route index element={<EventsList />} />
+                    <Route path=":id" element={<EditEvent/>}/>
+                    <Route path="new" element={<NewEvent/>}/>
                   </Route>
 
                   <Route path="notes">

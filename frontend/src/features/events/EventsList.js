@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
 import PulseLoader from "react-spinners/PulseLoader";
 
-const NotesList = () => {
+const EventsList = () => {
   useTitle("techNotes: Events List");
 
   const { username, isManager, isAdmin } = useAuth();
@@ -26,12 +26,12 @@ const NotesList = () => {
   if (isLoading) content = <PulseLoader color={"#FFF"} />;
 
   if (isError) {
-    content = <p className="errmsg">{error?.data?.message}</p>;
+    content = <p className="errmsg">{error?.data?.message} ha u pm ov</p>;
   }
 
   if (isSuccess) {
     const { ids, entities } = events;
-
+console.log(ids)
     let filteredIds;
     if (isManager || isAdmin) {
       filteredIds = [...ids];
@@ -76,4 +76,4 @@ const NotesList = () => {
 
   return content;
 };
-export default NotesList;
+export default EventsList;
