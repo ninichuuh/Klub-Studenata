@@ -4,24 +4,29 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        custom: "0 10px 20px 10px rgb(27, 94, 32)",
+        custom: "0 10px 20px 10px rgb(27, 94, 32)"
       },
       screens: {
         widescreen: { raw: "(min-aspect-ratio: 3/2)" },
-        tallscreen: { raw: "(max-aspect-ratio: 13/20)" },
+        tallscreen: { raw: "(max-aspect-ratio: 13/20)" }
       },
       keyframes: {
         "open-menu": {
           "0%": { transform: "scaleY(0)" },
           "80%": { transform: "scaleY(1.2)" },
-          "100%": { transform: "scaleY(1)" },
+          "100%": { transform: "scaleY(1)" }
         },
+        "nav-bar": {
+          "0%": { transform: "left:-100" },
+          "100%": { transform: "left: 0" }
+        }
       },
       animation: {
+        "navbar-intro": "nav-bar 2s ease-in forwards",
         "open-menu": "open-menu 0.5s ease-in-out forwards",
-        "mate-pulse": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-      },
-    },
+        "mate-pulse": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

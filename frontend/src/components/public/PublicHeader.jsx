@@ -8,7 +8,7 @@ const PublicHeader = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 bg-green-900 text-gray-100">
+    <header className="sticky top-0 z-10 animate-navbar-intro bg-green-900 text-gray-100">
       <section className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <h1 className="text-3xl font-medium">
           <a href="#hero">KSI Mate Balote</a>
