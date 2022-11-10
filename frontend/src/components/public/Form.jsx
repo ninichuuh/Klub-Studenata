@@ -38,7 +38,7 @@ const Form = () => {
         id="uploadForm"
         className="flex flex-initial flex-col items-center justify-center gap-8 text-2xl sm:text-3xl"
       >
-        <label className="w-3/4 font-medium sm:w-3/4">
+        <label className="font-medium w-1/2 sm:w-1/3">
           Tvoj email
           <input
             type="email"
@@ -53,7 +53,7 @@ const Form = () => {
           />
         </label>
 
-        <label className=" w-3/4 font-medium sm:w-3/4">
+        <label className="font-medium w-1/2 sm:w-1/3">
           Porukica
           <textarea
             name="message"
@@ -67,7 +67,7 @@ const Form = () => {
         </label>
         <label
           htmlFor="myFiles"
-          className="mb-2 flex w-3/4 flex-col font-medium text-black dark:text-white sm:w-3/4"
+          className="mb-2 w-1/2 flex flex-col font-medium text-black dark:text-white sm:w-1/3"
         >
           Vaše slike
           <input

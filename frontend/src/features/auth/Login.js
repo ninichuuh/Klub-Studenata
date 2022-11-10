@@ -128,7 +128,7 @@ const Login2 = () => {
                 </label>
               </div>
               <div className="relative">
-                <button className="h-10 w-32 rounded-xl border border-solid border-slate-900 bg-gradient-to-r from-green-600 to-green-900  text-2xl text-white hover:bg-green-700 hover:shadow-custom active:bg-green-500 dark:border-none">
+                <button className="h-10 w-32 rounded-xl border border-solid border-slate-900 bg-gradient-to-r from-green-600 to-green-900 text-2xl text-white hover:bg-green-700 hover:shadow-custom active:bg-green-500 dark:border-none">
                   Prijava
                 </button>
               </div>

@@ -33,7 +33,7 @@ const UsersList = () => {
       ids?.length && ids.map((userId) => <User key={userId} userId={userId} />);
 console.log({ids})
     content = (
-      <table className="table--users table">
+      <table className="">
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__th user__username">
