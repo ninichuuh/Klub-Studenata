@@ -16,7 +16,7 @@ const images = [
   { src: img2 },
   { src: img3 },
   { src: img4 },
-  { src: img5 },
+  { src: img5 }
 ];
 
 const Gallery = () => {
@@ -28,7 +28,7 @@ const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex snap-start scroll-mt-20 flex-col gap-8 p-6"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col gap-8 p-6"
     >
       <h1 className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
         Galerija kroz leta
@@ -36,11 +36,11 @@ const Gallery = () => {
       <Swiper
         className="h-full w-full"
         keyboard={{
-          enabled: true,
+          enabled: true
         }}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
+          disableOnInteraction: false
         }}
         grabCursor={true}
         effect={"creative"}
@@ -48,13 +48,13 @@ const Gallery = () => {
           prev: {
             shadow: true,
             translate: ["-125%", 0, -800],
-            rotate: [0, 0, -90],
+            rotate: [0, 0, -90]
           },
           next: {
             shadow: true,
             translate: ["125%", 0, -800],
-            rotate: [0, 0, 90],
-          },
+            rotate: [0, 0, 90]
+          }
         }}
         preloadImages={false}
         centeredSlides={true}

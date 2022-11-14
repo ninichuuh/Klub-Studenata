@@ -20,7 +20,7 @@ import Sections from "../components/sections/Layout";
 import SectionPage from "../components/sections/Hero";
 import { WavyContainer } from "react-wavy-transitions";
 import EventsList from "../features/events/EventsList";
-import FullGallery from "../components/UI/Gallery/FullGallery";
+
 const PublicRouter = () => {
   return (
     <>
@@ -30,7 +30,7 @@ const PublicRouter = () => {
           {/* public routes */}
           <Route index element={<Public />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/gallery" element={<FullGallery />} />
+
           <Route path="sections">
             <Route index element={<Sections />} />
             <Route path="#:id" element={<SectionPage />} />

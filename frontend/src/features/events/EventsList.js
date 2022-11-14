@@ -1,4 +1,5 @@
 import { useGetEventsQuery } from "./eventsApiSlice";
+
 import Event from "./Event";
 import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
@@ -14,11 +15,11 @@ const EventsList = () => {
     isLoading,
     isSuccess,
     isError,
-    error,
+    error
   } = useGetEventsQuery("eventsList", {
     pollingInterval: 15000,
     refetchOnFocus: true,
-    refetchOnMountOrArgChange: true,
+    refetchOnMountOrArgChange: true
   });
 
   let content;
@@ -46,31 +47,35 @@ const EventsList = () => {
       filteredIds.map((eventId) => <Event key={eventId} eventId={eventId} />);
 
     content = (
-      <table className="table--events table">
-        <thead className="table__thead">
-          <tr>
-            <th scope="col" className="table__th event__status">
-              Username
-            </th>
-            <th scope="col" className="table__th event__created">
-              Created
-            </th>
-            <th scope="col" className="table__th event__updated">
-              Updated
-            </th>
-            <th scope="col" className="table__th event__title">
-              Title
-            </th>
-            <th scope="col" className="table__th event__username">
-              Owner
-            </th>
-            <th scope="col" className="table__th event__edit">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <div class="relative flex justify-center overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-1/2 text-left text-sm text-gray-500 dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="py-3 px-6">
+                Ime Eventa
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Aktivan
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Updated
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Title
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Owner
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Edit
+              </th>
+            </tr>
+          </thead>
+          <tbody className="border-b bg-white  dark:border-gray-700 dark:bg-gray-800">
+            {tableContent}
+          </tbody>
+        </table>
+      </div>
     );
   }
 

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import "animate.css";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { headerIntro } from "./Animate";
 const PublicHeader = () => {
+  let introNav = useRef();
+
+  useEffect(() => {
+    headerIntro(introNav);
+  }, []);
+
   const [isOpen, setToggleMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -8,8 +16,11 @@ const PublicHeader = () => {
   };
 
   return (
-    <header className="animate__animated animate__bounceInLeft sticky top-0 z-10 bg-green-900 text-gray-100 overflow-hidden">
-      <section className="mx-auto flex max-w-7xl items-center justify-between p-4">
+    <header
+      ref={(el) => (introNav = el)}
+      className="sticky top-0 z-10 overflow-hidden overflow-x-hidden bg-green-900 text-gray-100"
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <h1 className="text-3xl font-medium">
           <a href="#hero">KSI Mate Balote</a>
         </h1>
@@ -41,8 +52,8 @@ const PublicHeader = () => {
             </a>
           </nav>
         </div>
-      </section>
-      <section
+      </div>
+      <div
         id="mobile-menu"
         className={
           isOpen
@@ -86,7 +97,7 @@ const PublicHeader = () => {
             Legal
           </a>
         </nav>
-      </section>
+      </div>
     </header>
   );
 };

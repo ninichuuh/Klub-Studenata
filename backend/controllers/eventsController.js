@@ -31,7 +31,9 @@ const createNewEvent = async (req, res) => {
 
   // Confirm data
   if (!user || !title || !text) {
-    return res.status(400).json({ message: "All fields are required ovo nije" });
+    return res
+      .status(400)
+      .json({ message: "All fields are required ovo nije" });
   }
 
   // Check for duplicate title
@@ -51,7 +53,9 @@ const createNewEvent = async (req, res) => {
     // Created
     return res.status(201).json({ message: "New event created" });
   } else {
-    return res.status(400).json({ message: "Invalid event data received create" });
+    return res
+      .status(400)
+      .json({ message: "Invalid event data received create" });
   }
 };
 
@@ -59,10 +63,10 @@ const createNewEvent = async (req, res) => {
 
 // @access Private
 const updateEvent = async (req, res) => {
-  const { id, user, title, text, completed } = req.body;
+  const { id, user, title, text, active } = req.body;
 
   // Confirm data
-  if (!id || !user || !title || !text || typeof completed !== "boolean") {
+  if (!id || !user || !title || !text || typeof active !== "boolean") {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -87,7 +91,7 @@ const updateEvent = async (req, res) => {
   event.user = user;
   event.title = title;
   event.text = text;
-  event.completed = completed;
+  event.active = active;
 
   const updatedEvent = await event.save();
 

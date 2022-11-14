@@ -1,12 +1,19 @@
-import "animate.css";
-
+import { textIntro } from "./Animate";
+import { useEffect, useRef } from "react";
 const Head = () => {
+  let intro = useRef();
+
+  useEffect(() => {
+    //animate text
+    textIntro(intro);
+    console.log("use effect prosao");
+  }, []);
   return (
     <section
       id="hero"
-      className="widescreen:section-min-height tallscreen:section-min-height snap-start overflow-hidden section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-8 p-6 sm:flex-row"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-8 overflow-hidden p-6 sm:flex-row"
     >
-      <article className="animate__animated animate__bounceInRight animate_slow sm:w-1/2">
+      <article className="sm:w-1/2" ref={(el) => (intro = el)}>
         <h2 className="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
           Klub studenata Istre
           <span className="mx-2 text-indigo-300 dark:text-purple-400">
@@ -21,7 +28,7 @@ const Head = () => {
           1963-2023
         </p>
       </article>
-      <div className='animate_animated animate_pulse inline-block h-80 w-80 bg-[url("https://data.labin.com/web/fotovijesti/neobavezno_1138_v.jpg")] bg-center bg-no-repeat'></div>
+      <div className='h-80 w-80 bg-[url("https://data.labin.com/web/fotovijesti/neobavezno_1138_v.jpg")] bg-center bg-no-repeat'></div>
     </section>
   );
 };

@@ -7,8 +7,8 @@ import { memo } from "react";
 const Event = ({ eventId }) => {
   const { event } = useGetEventsQuery("eventsList", {
     selectFromResult: ({ data }) => ({
-      event: data?.entities[eventId],
-    }),
+      event: data?.entities[eventId]
+    })
   });
 
   const navigate = useNavigate();
@@ -16,31 +16,33 @@ const Event = ({ eventId }) => {
   if (event) {
     const created = new Date(event.createdAt).toLocaleString("en-US", {
       day: "numeric",
-      month: "long",
+      month: "long"
     });
 
     const updated = new Date(event.updatedAt).toLocaleString("en-US", {
       day: "numeric",
-      month: "long",
+      month: "long"
     });
 
     const handleEdit = () => navigate(`/dash/events/${eventId}`);
 
     return (
-      <tr className="table__row">
-        <td className="table__cell event__status">
-          {event.completed ? (
-            <span className="event__status--completed">Completed</span>
+      <tr className="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+        <td className="whitespace-nowrap py-4 px-6 font-medium text-gray-900 dark:text-white">
+          {event.title}
+        </td>
+        <td className="py-4 px-6">
+          {event.active ? (
+            <span className="py-4 px-6">active</span>
           ) : (
-            <span className="event__status--open">Open</span>
+            <span className="py-4 px-6">Open</span>
           )}
         </td>
-        <td className="table__cell event__created">{created}</td>
-        <td className="table__cell event__updated">{updated}</td>
-        <td className="table__cell event__title">{event.title}</td>
-        <td className="table__cell event__username">{event.username}</td>
+        <td className="py-4 px-6 ">{created}</td>
+        <td className="py-4 px-6 ">{updated}</td>
+        <td className="py-4 px-6 ">{event.username}</td>
 
-        <td className="table__cell">
+        <td className="py-4 px-6">
           <button className="icon-button table__button" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>

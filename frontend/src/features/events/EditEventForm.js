@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   useUpdateEventMutation,
-  useDeleteEventMutation,
+  useDeleteEventMutation
 } from "./eventsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,14 +16,14 @@ const EditEventForm = ({ event, users }) => {
 
   const [
     deleteEvent,
-    { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
+    { isSuccess: isDelSuccess, isError: isDelError, error: delerror }
   ] = useDeleteEventMutation();
 
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(event.title);
   const [text, setText] = useState(event.text);
-  const [completed, setCompleted] = useState(event.completed);
+  const [active, setActive] = useState(event.active);
   const [userId, setUserId] = useState(event.user);
 
   useEffect(() => {
@@ -37,14 +37,14 @@ const EditEventForm = ({ event, users }) => {
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onTextChanged = (e) => setText(e.target.value);
-  const onCompletedChanged = (e) => setCompleted((prev) => !prev);
+  const onactiveChanged = (e) => setActive((prev) => !prev);
   const onUserIdChanged = (e) => setUserId(e.target.value);
 
   const canSave = [title, text, userId].every(Boolean) && !isLoading;
 
   const onSaveEventClicked = async (e) => {
     if (canSave) {
-      await updateEvent({ id: event.id, user: userId, title, text, completed });
+      await updateEvent({ id: event.id, user: userId, title, text, active });
     }
   };
 
@@ -58,7 +58,7 @@ const EditEventForm = ({ event, users }) => {
     year: "numeric",
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
+    second: "numeric"
   });
   const updated = new Date(event.updatedAt).toLocaleString("en-US", {
     day: "numeric",
@@ -66,7 +66,7 @@ const EditEventForm = ({ event, users }) => {
     year: "numeric",
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
+    second: "numeric"
   });
 
   const options = users.map((user) => {
@@ -143,16 +143,16 @@ const EditEventForm = ({ event, users }) => {
           <div className="form__divider">
             <label
               className="form__label form__checkbox-container"
-              htmlFor="event-completed"
+              htmlFor="event-active"
             >
               WORK COMPLETE:
               <input
                 className="form__checkbox"
-                id="event-completed"
-                name="completed"
+                id="event-active"
+                name="active"
                 type="checkbox"
-                checked={completed}
-                onChange={onCompletedChanged}
+                checked={active}
+                onChange={onactiveChanged}
               />
             </label>
 

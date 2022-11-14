@@ -6,30 +6,30 @@ const eventSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: "User"
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     text: {
       type: String,
-      required: true,
+      required: true
     },
-    completed: {
+    active: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
 eventSchema.plugin(AutoIncrement, {
   inc_field: "event",
   id: "eventNums",
-  start_seq: 100,
+  start_seq: 100
 });
 
 module.exports = mongoose.model("Event", eventSchema);

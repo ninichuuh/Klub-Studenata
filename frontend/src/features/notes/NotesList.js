@@ -14,11 +14,11 @@ const NotesList = () => {
     isLoading,
     isSuccess,
     isError,
-    error,
+    error
   } = useGetNotesQuery("notesList", {
     pollingInterval: 15000,
     refetchOnFocus: true,
-    refetchOnMountOrArgChange: true,
+    refetchOnMountOrArgChange: true
   });
 
   let content;
@@ -46,31 +46,33 @@ const NotesList = () => {
       filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
 
     content = (
-      <table className="table--notes table">
-        <thead className="table__thead">
-          <tr>
-            <th scope="col" className="table__th note__status">
-              Username
-            </th>
-            <th scope="col" className="table__th note__created">
-              Created
-            </th>
-            <th scope="col" className="table__th note__updated">
-              Updated
-            </th>
-            <th scope="col" className="table__th note__title">
-              Title
-            </th>
-            <th scope="col" className="table__th note__username">
-              Owner
-            </th>
-            <th scope="col" className="table__th note__edit">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <div class="relative flex justify-center overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-1/2 text-left text-sm text-gray-500 dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="py-3 px-6">
+                Username
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Status
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Naziv
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Kreiran
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Zadnji Update
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Edit
+              </th>
+            </tr>
+          </thead>
+          <tbody>{tableContent}</tbody>
+        </table>
+      </div>
     );
   }
 
