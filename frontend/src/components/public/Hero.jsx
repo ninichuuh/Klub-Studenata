@@ -1,9 +1,9 @@
 import { textIntro } from "./Animate";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 const Head = () => {
   let intro = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     //animate text
     textIntro(intro);
     console.log("use effect prosao");

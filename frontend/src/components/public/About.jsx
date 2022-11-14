@@ -1,13 +1,25 @@
-import React from "react";
+import { useRef, useLayoutEffect } from "react";
+import { titleAnimate } from "./Animate";
 
 const About = () => {
+let title = useRef()
+
+
+useLayoutEffect(() =>{
+  titleAnimate(title);
+},[])
+
+
   return (
     <section
       id="about"
       className="widescreen:section-min-height tallscreen:section-min-height section-min-height mb-12 flex scroll-mt-20 flex-col place-content-evenly items-center gap-12 p-6"
     >
       <article className="">
-        <h1 className="animate__animated animate__bounceInLeft text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
+        <h1
+          ref={(el) => (title=el)}
+          className="text-center text-4xl  font-bold text-slate-900 animate__animated dark:text-white sm:text-5xl"
+        >
           O Nama
         </h1>
         <p className="mt-8 text-center text-2xl text-slate-700 dark:text-slate-400">

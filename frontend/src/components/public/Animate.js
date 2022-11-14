@@ -15,3 +15,14 @@ export const headerIntro = (elem) => {
     { x: 0, duration: 1.5, ease: "Circ.easeOut" }
   );
 };
+
+export const titleAnimate = (elem) => {
+  gsap.set(elem, { transformPerspective: 300 });
+  gsap.fromTo(elem, {
+    
+    rotationX: -90,
+    transformOrigin: "50% 50% 50",
+    
+  },{opacity:1,duration: 2, rotationX:0});
+};
+

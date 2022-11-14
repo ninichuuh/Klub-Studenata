@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useRef } from "react";
 import { headerIntro } from "./Animate";
 const PublicHeader = () => {
   let introNav = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     headerIntro(introNav);
   }, []);
 

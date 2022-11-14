@@ -26,6 +26,5 @@ gsap.registerPlugin(
   Draggable,
   EaselPlugin,
   MotionPathPlugin,
-
   TextPlugin
 );
