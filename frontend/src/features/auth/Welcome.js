@@ -10,7 +10,7 @@ const Welcome = () => {
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-US", {
     dateStyle: "full",
-    timeStyle: "long"
+    timeStyle: "long",
   }).format(date);
 
   const content = (

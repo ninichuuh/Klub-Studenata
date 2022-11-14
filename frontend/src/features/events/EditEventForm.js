@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   useUpdateEventMutation,
-  useDeleteEventMutation
+  useDeleteEventMutation,
 } from "./eventsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ const EditEventForm = ({ event, users }) => {
 
   const [
     deleteEvent,
-    { isSuccess: isDelSuccess, isError: isDelError, error: delerror }
+    { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
   ] = useDeleteEventMutation();
 
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const EditEventForm = ({ event, users }) => {
     year: "numeric",
     hour: "numeric",
     minute: "numeric",
-    second: "numeric"
+    second: "numeric",
   });
   const updated = new Date(event.updatedAt).toLocaleString("en-US", {
     day: "numeric",
@@ -66,7 +66,7 @@ const EditEventForm = ({ event, users }) => {
     year: "numeric",
     hour: "numeric",
     minute: "numeric",
-    second: "numeric"
+    second: "numeric",
   });
 
   const options = users.map((user) => {

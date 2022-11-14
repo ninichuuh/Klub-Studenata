@@ -18,7 +18,7 @@ const OptimizedImage = ({ image }) => {
     <div className="relative">
       <LazyLoadImage
         key={image.name}
-        src={url}
+        src={image.name}
         height={500}
         width={333}
         onLoad={handleLoad}

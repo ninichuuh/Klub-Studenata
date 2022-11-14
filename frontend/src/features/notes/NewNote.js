@@ -8,8 +8,8 @@ const NewNote = () => {
 
   const { users } = useGetUsersQuery("usersList", {
     selectFromResult: ({ data }) => ({
-      users: data?.ids.map((id) => data?.entities[id])
-    })
+      users: data?.ids.map((id) => data?.entities[id]),
+    }),
   });
 
   if (!users?.length) return <PulseLoader color={"#FFF"} />;

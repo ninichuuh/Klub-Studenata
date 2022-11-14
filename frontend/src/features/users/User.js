@@ -7,10 +7,10 @@ import { memo } from "react";
 const User = ({ userId }) => {
   const { user } = useGetUsersQuery("usersList", {
     selectFromResult: ({ data }) => ({
-      user: data?.entities[userId]
-    })
+      user: data?.entities[userId],
+    }),
   });
- 
+
   const navigate = useNavigate();
 
   if (user) {

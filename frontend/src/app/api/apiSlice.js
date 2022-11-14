@@ -11,11 +11,11 @@ const baseQuery = fetchBaseQuery({
       headers.set("authorization", `Bearer ${token}`);
     }
     return headers;
-  }
+  },
 });
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-  console.log({args}); // request url, method, body
+  console.log({ args }); // request url, method, body
   // console.log(api); // signal, dispatch, getState()
   // console.log(extraOptions) //custom like {shout: true}
 
@@ -48,5 +48,5 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: ["Note", "Event", "User"],
-  endpoints: (builder) => ({})
+  endpoints: (builder) => ({}),
 });

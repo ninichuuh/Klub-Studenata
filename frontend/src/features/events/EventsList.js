@@ -14,11 +14,11 @@ const EventsList = () => {
     isLoading,
     isSuccess,
     isError,
-    error
+    error,
   } = useGetEventsQuery("eventsList", {
     pollingInterval: 15000,
     refetchOnFocus: true,
-    refetchOnMountOrArgChange: true
+    refetchOnMountOrArgChange: true,
   });
 
   let content;
@@ -31,7 +31,7 @@ const EventsList = () => {
 
   if (isSuccess) {
     const { ids, entities } = events;
-console.log(ids)
+    console.log(ids);
     let filteredIds;
     if (isManager || isAdmin) {
       filteredIds = [...ids];

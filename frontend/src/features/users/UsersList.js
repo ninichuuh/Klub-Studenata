@@ -11,11 +11,11 @@ const UsersList = () => {
     isLoading,
     isSuccess,
     isError,
-    error
+    error,
   } = useGetUsersQuery("usersList", {
     pollingInterval: 60000,
     refetchOnFocus: true,
-    refetchOnMountOrArgChange: true
+    refetchOnMountOrArgChange: true,
   });
 
   let content;
@@ -31,7 +31,7 @@ const UsersList = () => {
 
     const tableContent =
       ids?.length && ids.map((userId) => <User key={userId} userId={userId} />);
-console.log({ids})
+    console.log({ ids });
     content = (
       <table className="">
         <thead className="table__thead">

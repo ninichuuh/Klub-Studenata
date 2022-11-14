@@ -23,12 +23,11 @@ const Form = () => {
     });
 
     const json = await response.json();
-    
   };
   return (
     <section
       id="contact"
-      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 scroll-mt-16 justify-center p-6"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 snap-start scroll-mt-16 justify-center p-6"
     >
       <h2 className="mb-6 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
         Javi Nam Se
@@ -38,7 +37,7 @@ const Form = () => {
         id="uploadForm"
         className="flex flex-initial flex-col items-center justify-center gap-8 text-2xl sm:text-3xl"
       >
-        <label className="font-medium w-1/2 sm:w-1/3">
+        <label className="w-1/2 font-medium sm:w-1/3">
           Tvoj email
           <input
             type="email"
@@ -53,7 +52,7 @@ const Form = () => {
           />
         </label>
 
-        <label className="font-medium w-1/2 sm:w-1/3">
+        <label className="w-1/2 font-medium sm:w-1/3">
           Porukica
           <textarea
             name="message"
@@ -67,7 +66,7 @@ const Form = () => {
         </label>
         <label
           htmlFor="myFiles"
-          className="mb-2 w-1/2 flex flex-col font-medium text-black dark:text-white sm:w-1/3"
+          className="mb-2 flex w-1/2 flex-col font-medium text-black dark:text-white sm:w-1/3"
         >
           Vaše slike
           <input

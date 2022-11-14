@@ -7,7 +7,7 @@ import {
   faCalendarPlus,
   faUserGear,
   faUserPlus,
-  faRightFromBracket
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 

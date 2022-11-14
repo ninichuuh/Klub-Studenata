@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "animate.css";
 const PublicHeader = () => {
   const [isOpen, setToggleMenu] = useState(false);
 
@@ -8,7 +8,7 @@ const PublicHeader = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 animate-navbar-intro bg-green-900 text-gray-100">
+    <header className="animate__animated animate__bounceInLeft sticky top-0 z-10 bg-green-900 text-gray-100 overflow-hidden">
       <section className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <h1 className="text-3xl font-medium">
           <a href="#hero">KSI Mate Balote</a>

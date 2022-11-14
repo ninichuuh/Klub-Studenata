@@ -27,7 +27,9 @@ const PublicFooter = () => {
         <div className="flex flex-col sm:gap-2">
           <p className="text-center">
             Copyright &copy; <span id="year">2022</span> <br />
-            <a href="/privacy" className="hover:opacity-90">Politika Privatnosti</a>
+            <a href="/privacy" className="hover:opacity-90">
+              Politika Privatnosti
+            </a>
           </p>
         </div>
       </section>

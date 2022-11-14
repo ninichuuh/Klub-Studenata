@@ -19,7 +19,7 @@ const Sections = () => {
   return (
     <section
       id="sections"
-      className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col p-6"
+      className="widescreen:section-min-height snap-start tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col p-6"
     >
       <h2 className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
         Naše Sekcije

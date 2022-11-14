@@ -7,8 +7,8 @@ import { memo } from "react";
 const Event = ({ eventId }) => {
   const { event } = useGetEventsQuery("eventsList", {
     selectFromResult: ({ data }) => ({
-      event: data?.entities[eventId]
-    })
+      event: data?.entities[eventId],
+    }),
   });
 
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ const Event = ({ eventId }) => {
   if (event) {
     const created = new Date(event.createdAt).toLocaleString("en-US", {
       day: "numeric",
-      month: "long"
+      month: "long",
     });
 
     const updated = new Date(event.updatedAt).toLocaleString("en-US", {
       day: "numeric",
-      month: "long"
+      month: "long",
     });
 
     const handleEdit = () => navigate(`/dash/events/${eventId}`);

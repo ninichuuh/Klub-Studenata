@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 
 import Loader from "../Loader";
+
 // import Grid from "./Grid";
 const PublicHeader = React.lazy(() => {
   return Promise.all([
@@ -49,16 +50,16 @@ const Sections = React.lazy(() => {
 });
 const Public = () => {
   const content = (
-    <div className="min-h-screen bg-slate-50 dark:bg-black dark:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-black dark:text-white ">
       <Suspense fallback={<Loader />}>
         <PublicHeader />
-        <main className="mx-auto max-w-7xl">
-          <Hero />
-          <About />
-          <Sections />
+        <main className="mx-auto max-w-7xl overflow-y-scroll snap snap-y snap-mandatory">
+          <Hero/>
+          <About/>
+          <Sections/>
           {/* <Grid /> */}
-          <Gallery />
-          <Form />
+          <Gallery/>
+          <Form/>
         </main>
         <PublicFooter />
       </Suspense>
