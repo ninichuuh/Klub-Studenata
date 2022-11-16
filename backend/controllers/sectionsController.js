@@ -1,5 +1,6 @@
 const Section = require("../models/Section");
 const User = require("../models/User");
+
 const getAllSections = async (req, res) => {
   const sections = await Section.find().lean();
 
@@ -53,48 +54,42 @@ const updateSection = async (req, res) => {
     .lean()
     .exec();
 
-
-  if(duplicate && duplicate?._id.toString() !==id) {
-    return res.status(409).json({message: "Duplicate section name"})
+  if (duplicate && duplicate?._id.toString() !== id) {
+    return res.status(409).json({ message: "Duplicate section name" });
   }
 
-  section.manager= manager;
-  section.title= title
-  section.text = text
-  section.active= active
+  section.manager = manager;
+  section.title = title;
+  section.text = text;
+  section.active = active;
 
   const updatedSection = await section.save();
 
-
-  res.json(`'${updatedSection.title}' updated`)
+  res.json(`'${updatedSection.title}' updated`);
 };
 
+const deleteSection = async (req, res) => {
+  const { id } = req.body;
 
+  if (!id) {
+    return res.status(400).json({ message: "Section Id required" });
+  }
 
-const deleteSection = async (req,res) => {
-    const {id} = req.body
+  const section = await Section.findById(id).exec();
 
-    if(!id) {
-        return res.status(400).json({message: "Section Id required"})
-    }
+  if (!section) {
+    return res.status(400).json({ message: "Section not found --delete" });
+  }
+  const result = await section.deleteOne();
 
-    const section = await Section.findById(id).exec();
+  const reply = `Section '${result.title}' with ID ${result._id} deleted`;
 
-    if (!section) {
-        return res.status(400).json({message: "Section not found --delete"})
-    }
-    const result = await section.deleteOne()
+  res.json(reply);
+};
 
-    const reply = `Section '${result.title}' with ID ${result._id} deleted`
-
-
-    res.json(reply)
-}
-
-
-module.exports{
-    getAllSections,
-    createNewSection,
-    updateSection,
-    deleteSection
-}
+module.exports = {
+  getAllSections,
+  createNewSection,
+  updateSection,
+  deleteSection
+};
