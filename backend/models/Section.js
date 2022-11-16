@@ -11,9 +11,14 @@ const sectionSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    completed: {
+    active: {
       type: Boolean,
-      default: false,
+      default: true,
+    },
+    manager: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
   }
 )
