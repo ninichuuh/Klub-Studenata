@@ -4,6 +4,7 @@ import { usersApiSlice } from "../users/usersApiSlice";
 import { eventsApiSlice } from "../events/eventsApiSlice";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { sectionsApiSlice } from "../sections/sectionsApiSlice";
 const Prefetch = () => {
   useEffect(() => {
     store.dispatch(
@@ -14,6 +15,9 @@ const Prefetch = () => {
     );
     store.dispatch(
       eventsApiSlice.util.prefetch("getEvents", "eventsList", { force: true })
+    );
+    store.dispatch(
+      sectionsApiSlice.util.prefetch("getSections", "sectionsList", { force: true })
     );
   }, []);
 

@@ -1,11 +1,13 @@
-import { textIntro } from "./Animate";
+import { textIntro, mateIntro } from "./Animate";
 import { useLayoutEffect, useRef } from "react";
+import {ReactComponent as Mate} from "../../img/mate.svg"
 const Head = () => {
   let intro = useRef();
-
+  let mate = useRef()
   useLayoutEffect(() => {
     //animate text
     textIntro(intro);
+    mateIntro(mate)
     console.log("use effect prosao");
   }, []);
   return (
@@ -28,8 +30,9 @@ const Head = () => {
           1963-2023
         </p>
       </article>
-      <div className='h-80 w-80 bg-[url("https://data.labin.com/web/fotovijesti/neobavezno_1138_v.jpg")] bg-center bg-no-repeat'></div>
-    </section>
+    <div   ref={(el)=>(mate=el)} className='h-80 w-80 '>
+      <Mate/>
+      </div></section>
   );
 };
 

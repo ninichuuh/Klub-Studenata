@@ -30,7 +30,7 @@ export const sectionsApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: "Sections", id: "LIST" }];
       }
     }),
-    addNewEvent: builder.mutation({
+    addNewSection: builder.mutation({
       query: (initialSectionData) => ({
         url: "/sections",
         method: "POST",

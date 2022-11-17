@@ -4,14 +4,18 @@ import Public from "../components/public/Public";
 import DashLayout from "../components/DashLayout";
 import Login from "../features/auth/Login";
 import Welcome from "../features/auth/Welcome";
-import NotesList from "../features/notes/NotesList";
 import UsersList from "../features/users/UsersList";
+import NotesList from "../features/notes/NotesList";
+import EventsList from "../features/events/EventsList";
+import SectionsList from "../features/sections/SectionList";
 import EditUser from "../features/users/EditUser";
-import NewUserForm from "../features/users/NewUserForm";
 import EditNote from "../features/notes/EditNote";
-import NewNote from "../features/notes/NewNote";
 import EditEvent from "../features/events/EditEvent";
+import EditSection from "../features/sections/EditSection";
+import NewUser from "../features/users/NewUserForm";
+import NewNote from "../features/notes/NewNote";
 import NewEvent from "../features/events/NewEvent";
+import NewSection from "../features/sections/NewSection";
 import Prefetch from "../features/auth/Prefetch";
 import PersistLogin from "../features/auth/PersistLogin";
 import RequireAuth from "../features/auth/RequireAuth";
@@ -19,7 +23,6 @@ import { ROLES } from "../config/roles";
 import Sections from "../components/sections/Layout";
 import SectionPage from "../components/sections/Hero";
 import { WavyContainer } from "react-wavy-transitions";
-import EventsList from "../features/events/EventsList";
 
 const PublicRouter = () => {
   return (
@@ -55,7 +58,13 @@ const PublicRouter = () => {
                     <Route path="users">
                       <Route index element={<UsersList />} />
                       <Route path=":id" element={<EditUser />} />
-                      <Route path="new" element={<NewUserForm />} />
+                      <Route path="new" element={<NewUser />} />
+                    </Route>
+
+                    <Route path="sections">
+                      <Route index element = {<SectionsList/>}/>
+                      <Route path=":id" element= {<EditSection/>}/>
+                      <Route path="new" element= {<NewSection/>}/>
                     </Route>
                   </Route>
 

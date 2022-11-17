@@ -31,9 +31,8 @@ const UsersList = () => {
 
     const tableContent =
       ids?.length && ids.map((userId) => <User key={userId} userId={userId} />);
-    console.log({ ids });
     content = (
-      <div class="relative flex justify-center overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative flex justify-center overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-1/2 text-left text-sm text-gray-500 dark:text-gray-400">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
