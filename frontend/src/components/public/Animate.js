@@ -33,6 +33,6 @@ export const titleAnimate = (elem) => {
     transformOrigin: "50% 50% 50",
     
   },{scrollTrigger:{ elem,
-  toggleActions: "restart reset reverse restart"},opacity:1,duration: 2, rotationX:0});
+  toggleActions: "restart resume restart restart"},opacity:1,duration: 2, rotationX:0});
 };
 
