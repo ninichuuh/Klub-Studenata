@@ -35,4 +35,26 @@ export const titleAnimate = (elem) => {
   },{scrollTrigger:{ elem,
   toggleActions: "restart resume restart restart"},opacity:1,duration: 2, rotationX:0});
 };
+export const titleAnimateGallery = (elem) => {
+  
+  gsap.set(elem, { transformPerspective: 300 });
+  gsap.fromTo(elem, {
+    opacity: 0.5,
+    rotationX: -90,
+    transformOrigin: "50% 50% 50",
+    
+  },{scrollTrigger:{ elem,
+  toggleActions: "restart resume restart restart"},opacity:1,duration: 2, rotationX:0});
+};
+export const titleAnimateForm = (elem) => {
+  
+  gsap.set(elem, { transformPerspective: 300 });
+  gsap.fromTo(elem, {
+    opacity: 0.5,
+    rotationX: -90,
+    transformOrigin: "50% 50% 50",
+    
+  },{scrollTrigger:{ elem,
+  toggleActions: "restart resume restart restart"},opacity:1,duration: 2, rotationX:0});
+};
 
