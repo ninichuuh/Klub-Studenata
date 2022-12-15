@@ -2,21 +2,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SectionCard from "../UI/SectionCard";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import sectionData from "../sections/sectionsData";
-import { Navigation, Mousewheel, Pagination, EffectCoverflow } from "swiper";
+import { Mousewheel, EffectCoverflow } from "swiper";
 const sectionsData = sectionData;
 const SectionSwiper = () => {
   return (
     <Swiper
       effect={"coverflow"}
       loop={true}
-      navigation={true}
       direction={"horizontal"}
       mousewheel={true}
       centeredSlides={true}
       slidesPerView={3}
+      spaceBetween={30}
       coverflowEffect={{
         rotate: 50,
         stretch: 0,
@@ -24,7 +22,7 @@ const SectionSwiper = () => {
         modifier: 1,
         slideShadows: true
       }}
-      modules={[Navigation, Mousewheel, EffectCoverflow, Pagination]}
+      modules={[ Mousewheel, EffectCoverflow]}
       className="gird"
     >
       {sectionsData.map((section) => (

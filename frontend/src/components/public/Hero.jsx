@@ -20,13 +20,13 @@ const Head = () => {
         <p className="mt-4 max-w-fit text-center text-base font-bold text-slate-800 bg-zuta  sm:text-left">
           1963-2023
         </p>
-        <h2 className="max-w-md text-center text-6xl font-weight-700 font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+        <h2 className="max-w-md text-center text-6xl font-weight-700 font-bold  sm:text-left sm:text-5xl">
           Klub studenata 
           
           Istre "Mate Balota"
         
         </h2>
-        <p className="mt-4 max-w-md text-center text-base text-slate-700 dark:text-slate-400 sm:text-left">
+        <p className="mt-4 max-w-md text-center text-base  sm:text-left">
           Udruga s ciljem okupljanja studenata radi prenošenja tradicije
           solidarnosti i promoviranja istarske kulture.
         </p>

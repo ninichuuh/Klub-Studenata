@@ -29,6 +29,12 @@ const About = React.lazy(() => {
     new Promise((resolve) => setTimeout(resolve, 2500))
   ]).then(([moduleExports]) => moduleExports);
 });
+const Events = React.lazy(() => {
+  return Promise.all([
+    import("./Events"),
+    new Promise((resolve) => setTimeout(resolve, 2500))
+  ]).then(([moduleExports]) => moduleExports);
+});
 
 // const Gallery = React.lazy(() => {
 //   return Promise.all([
@@ -42,22 +48,23 @@ const About = React.lazy(() => {
 //     new Promise((resolve) => setTimeout(resolve, 2500))
 //   ]).then(([moduleExports]) => moduleExports);
 // });
-// const Sections = React.lazy(() => {
-//   return Promise.all([
-//     import("./Sections"),
-//     new Promise((resolve) => setTimeout(resolve, 2500))
-//   ]).then(([moduleExports]) => moduleExports);
-// });
+const Sections = React.lazy(() => {
+  return Promise.all([
+    import("./Sections"),
+    new Promise((resolve) => setTimeout(resolve, 2500))
+  ]).then(([moduleExports]) => moduleExports);
+});
 const Public = () => {
   const content = (
-    <div className="min-h-screen bg-slate-50 dark:bg-black dark:text-white ">
+    <div className="min-h-screen bg-slate-50  ">
       <Suspense fallback={<Loader />}>
         <PublicHeader />
         <main className="mx-auto max-w-7xl">
           <Hero />
           <About />
-          {/* <Sections />
-          <Grid />
+          <Sections />
+          <Events />
+          {/* <Grid />
           <Gallery />
           <Form /> */}
         </main>

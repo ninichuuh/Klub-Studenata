@@ -10,7 +10,8 @@ module.exports = {
           dark: '#fee5bc',
         }},
       boxShadow: {
-        custom: "0 10px 20px 10px rgb(27, 94, 32)"
+        custom: "0px 10px 20px rgba(0, 0, 0, 0.1)",
+        event: "0px 0px 30px rgba(0, 0, 0, 0.06)"
       },
       screens: {
         widescreen: { raw: "(min-aspect-ratio: 3/2)" },

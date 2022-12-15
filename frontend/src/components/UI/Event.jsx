@@ -1,12 +1,15 @@
 import React from "react";
 
-const Event = () => {
+const Event = ({name,text,date}) => {
   return (
-    <div className="grid grid-cols-12 gap-0">
-      <div className="col-span-2 border-2 border-b-0 border-black">Date</div>
-      <div className="col-span-3 border-2 border-x-0 border-black">Picture</div>
-      <div className="col-span-7 border-2 border-black">
-        Info o jebenim projektima
+    <div className="h-32 w-96 gap-5 flex rounded-lg flex-row shadow-event">
+      <div className="flex flex-col">
+        <button className="w-20 h-8">{date}</button>
+        <button className="w-20 h-8">Galerija</button>
+      </div>
+      <div>
+        <h3 className="text-2xl font-bold">{name}</h3>
+        <p className="text-base font-normal">{text}</p>
       </div>
     </div>
   );
