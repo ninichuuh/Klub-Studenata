@@ -1,10 +1,10 @@
-import { Football, Goats, Creative } from "../../img/images";
+import { Creative } from "../../img/images";
 
 const sectionsData = [
   {
     id: 1,
     sectionName: "Sportska sekcija",
-    imgSrc: Football,
+    imgSrc: Creative,
     imgAlt: "Sportska sekcija",
     text: "OVa sekcija je za nesto sta terle jos nije napisao",
   },
@@ -18,21 +18,21 @@ const sectionsData = [
   {
     id: 3,
     sectionName: "Popit sekcija",
-    imgSrc: Goats,
+    imgSrc: Creative,
     imgAlt: "Popit sekcija",
     text: "OVa sekcija je za nesto sta terle jos nije napisao",
   },
   {
     id: 4,
     sectionName: "Popit sekcija",
-    imgSrc: Goats,
+    imgSrc: Creative,
     imgAlt: "Popit sekcija",
     text: "OVa sekcija je za nesto sta terle jos nije napisao",
   },
   {
     id: 5,
     sectionName: "Popit sekcija",
-    imgSrc: Goats,
+    imgSrc: Creative,
     imgAlt: "Popit sekcija",
     text: "OVa sekcija je za nesto sta terle jos nije napisao",
   },

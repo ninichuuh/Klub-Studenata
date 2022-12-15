@@ -30,24 +30,24 @@ const About = React.lazy(() => {
   ]).then(([moduleExports]) => moduleExports);
 });
 
-const Gallery = React.lazy(() => {
-  return Promise.all([
-    import("./Gallery"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
-  ]).then(([moduleExports]) => moduleExports);
-});
-const Form = React.lazy(() => {
-  return Promise.all([
-    import("./Form"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
-  ]).then(([moduleExports]) => moduleExports);
-});
-const Sections = React.lazy(() => {
-  return Promise.all([
-    import("./Sections"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
-  ]).then(([moduleExports]) => moduleExports);
-});
+// const Gallery = React.lazy(() => {
+//   return Promise.all([
+//     import("./Gallery"),
+//     new Promise((resolve) => setTimeout(resolve, 2500))
+//   ]).then(([moduleExports]) => moduleExports);
+// });
+// const Form = React.lazy(() => {
+//   return Promise.all([
+//     import("./Form"),
+//     new Promise((resolve) => setTimeout(resolve, 2500))
+//   ]).then(([moduleExports]) => moduleExports);
+// });
+// const Sections = React.lazy(() => {
+//   return Promise.all([
+//     import("./Sections"),
+//     new Promise((resolve) => setTimeout(resolve, 2500))
+//   ]).then(([moduleExports]) => moduleExports);
+// });
 const Public = () => {
   const content = (
     <div className="min-h-screen bg-slate-50 dark:bg-black dark:text-white ">
@@ -56,10 +56,10 @@ const Public = () => {
         <main className="mx-auto max-w-7xl">
           <Hero />
           <About />
-          <Sections />
-          {/* <Grid /> */}
+          {/* <Sections />
+          <Grid />
           <Gallery />
-          <Form />
+          <Form /> */}
         </main>
         <PublicFooter />
       </Suspense>
