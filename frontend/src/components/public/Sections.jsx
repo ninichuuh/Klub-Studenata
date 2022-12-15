@@ -1,31 +1,21 @@
 import React from "react";
-import SectionCard from "../UI/SectionCard";
-import sectionData from "../sections/sectionsData";
-
-const sectionsData = sectionData;
-
+import SectionSwiper from "../UI/SectionSwiper";
 const Sections = () => {
-  const sections = sectionsData.map((section) => (
-    <a href="sections">
-      <SectionCard
-        key={section.id}
-        img={section.imgSrc}
-        alt={section.imgAlt}
-        text={section.text}
-        name={section.sectionName}
-      />
-    </a>
-  ));
   return (
     <section
       id="sections"
       className="widescreen:section-min-height  tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col p-6"
     >
-      <h2 className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
-        Naše Sekcije
+      <h2 className="mb-12 text-center text-base font-bold text-white underline decoration-yellow-300 decoration-solid decoration-[14px] underline-offset-[14px] sm:text-5xl">
+        Sekcije Kluba
       </h2>
-      <div className="mt-16 flex flex-col flex-wrap content-center justify-center gap-20 md:flex-row">
-        {sections}
+      <p>
+        Klub se sastoji od šest sekcija u kojima naši studenti sit amet,
+        consectetur adipiscing elit. Proin cursus, tellus id condimentum
+        fringilla, risus nisi pharetra mi, in ornare ante ex sed erat.
+      </p>
+      <div className="mt-16 flex ">
+        <SectionSwiper />
       </div>
     </section>
   );
