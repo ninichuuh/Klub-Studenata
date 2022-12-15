@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 const getAllSections = async (req, res) => {
   const sections = await Section.find().lean();
-
+  console.table(sections)
   if (!sections?.length) {
     return res.status(400).json({ message: "No sections found" });
   }
@@ -25,7 +25,7 @@ const createNewSection = async (req, res) => {
     return res.status(409).json({ message: "Duplicate section title" });
   }
 
-  const section = await Section.createe({ title, text, manager });
+  const section = await Section.create({ title, text, manager });
 
   if (section) {
     return res.status(201).json({ message: "New section created" });

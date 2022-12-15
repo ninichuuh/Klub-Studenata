@@ -3,6 +3,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        zuta: {
+          light: '#fef4e4',
+          DEFAULT: '#ffff01',
+          dark: '#fee5bc',
+        }},
       boxShadow: {
         custom: "0 10px 20px 10px rgb(27, 94, 32)"
       },

@@ -1,11 +1,11 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useLayoutEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/bundle";
-
+import { titleAnimateGallery } from "./Animate";
 import { img1, img2, img3, img4, img5 } from "../../img/images";
 
 // import required modules
@@ -16,10 +16,15 @@ const images = [
   { src: img2 },
   { src: img3 },
   { src: img4 },
-  { src: img5 }
+  { src: img5 },
 ];
 
 const Gallery = () => {
+  let titleGallery = useRef();
+
+  useLayoutEffect(() => {
+    titleAnimateGallery(titleGallery);
+  }, []);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/gallery");
@@ -30,17 +35,20 @@ const Gallery = () => {
       id="gallery"
       className="widescreen:section-min-height tallscreen:section-min-height section-min-height my-12 flex scroll-mt-20 flex-col gap-8 p-6"
     >
-      <h1 className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
+      <h1
+        ref={(el) => (titleGallery = el)}
+        className="mb-12 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl"
+      >
         Galerija kroz leta
       </h1>
       <Swiper
         className="h-full w-full"
         keyboard={{
-          enabled: true
+          enabled: true,
         }}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         }}
         grabCursor={true}
         effect={"creative"}
@@ -48,13 +56,13 @@ const Gallery = () => {
           prev: {
             shadow: true,
             translate: ["-125%", 0, -800],
-            rotate: [0, 0, -90]
+            rotate: [0, 0, -90],
           },
           next: {
             shadow: true,
             translate: ["125%", 0, -800],
-            rotate: [0, 0, 90]
-          }
+            rotate: [0, 0, 90],
+          },
         }}
         preloadImages={false}
         centeredSlides={true}
