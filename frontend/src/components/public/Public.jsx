@@ -1,57 +1,51 @@
 import React, { Suspense } from "react";
 
 import Loader from "../Loader";
-
+import ScrollButton from "../UI/ScrollButton";
 // import Grid from "./Grid";
 const PublicHeader = React.lazy(() => {
   return Promise.all([
     import("./PublicHeader"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
+    new Promise((resolve) => setTimeout(resolve, 50))
   ]).then(([moduleExports]) => moduleExports);
 });
 const PublicFooter = React.lazy(() => {
   return Promise.all([
     import("./PublicFooter"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
+    new Promise((resolve) => setTimeout(resolve, 50))
   ]).then(([moduleExports]) => moduleExports);
 });
 
 const Hero = React.lazy(() => {
   return Promise.all([
     import("./Hero"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
+    new Promise((resolve) => setTimeout(resolve, 50))
   ]).then(([moduleExports]) => moduleExports);
 });
 
 const About = React.lazy(() => {
   return Promise.all([
     import("./About"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
+    new Promise((resolve) => setTimeout(resolve, 50))
   ]).then(([moduleExports]) => moduleExports);
 });
 const Events = React.lazy(() => {
   return Promise.all([
     import("./Events"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
+    new Promise((resolve) => setTimeout(resolve, 50))
   ]).then(([moduleExports]) => moduleExports);
 });
 
-// const Gallery = React.lazy(() => {
-//   return Promise.all([
-//     import("./Gallery"),
-//     new Promise((resolve) => setTimeout(resolve, 2500))
-//   ]).then(([moduleExports]) => moduleExports);
-// });
-// const Form = React.lazy(() => {
-//   return Promise.all([
-//     import("./Form"),
-//     new Promise((resolve) => setTimeout(resolve, 2500))
-//   ]).then(([moduleExports]) => moduleExports);
-// });
+const Contact = React.lazy(() => {
+  return Promise.all([
+    import("./Contact"),
+    new Promise((resolve) => setTimeout(resolve, 50))
+  ]).then(([moduleExports]) => moduleExports);
+});
 const Sections = React.lazy(() => {
   return Promise.all([
     import("./Sections"),
-    new Promise((resolve) => setTimeout(resolve, 2500))
+    new Promise((resolve) => setTimeout(resolve, 50))
   ]).then(([moduleExports]) => moduleExports);
 });
 const Public = () => {
@@ -64,9 +58,8 @@ const Public = () => {
           <About />
           <Sections />
           <Events />
-          {/* <Grid />
-          <Gallery />
-          <Form /> */}
+          <Contact />
+          <ScrollButton />
         </main>
         <PublicFooter />
       </Suspense>

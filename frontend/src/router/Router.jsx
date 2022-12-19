@@ -20,25 +20,18 @@ import Prefetch from "../features/auth/Prefetch";
 import PersistLogin from "../features/auth/PersistLogin";
 import RequireAuth from "../features/auth/RequireAuth";
 import { ROLES } from "../config/roles";
-import Sections from "../components/sections/Layout";
-import SectionPage from "../components/sections/Hero";
-import { WavyContainer } from "react-wavy-transitions";
+import AboutPage from "../components/about/AboutPage";
 
 const PublicRouter = () => {
   return (
     <>
-      <WavyContainer />
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* public routes */}
           <Route index element={<Public />} />
+
           <Route path="/login" element={<Login />} />
-
-          <Route path="sections">
-            <Route index element={<Sections />} />
-            <Route path="#:id" element={<SectionPage />} />
-          </Route>
-
+          <Route path="/about" element={<AboutPage />} />
           {/* Protected Routes */}
           <Route element={<PersistLogin />}>
             <Route
@@ -62,9 +55,9 @@ const PublicRouter = () => {
                     </Route>
 
                     <Route path="sections">
-                      <Route index element = {<SectionsList/>}/>
-                      <Route path=":id" element= {<EditSection/>}/>
-                      <Route path="new" element= {<NewSection/>}/>
+                      <Route index element={<SectionsList />} />
+                      <Route path=":id" element={<EditSection />} />
+                      <Route path="new" element={<NewSection />} />
                     </Route>
                   </Route>
 

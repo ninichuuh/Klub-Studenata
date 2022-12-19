@@ -1,10 +1,15 @@
 import { useRef, useLayoutEffect } from "react";
 import { titleAnimate } from "./Animate";
 import { Mate, Studenti } from "../../img/images";
-
+import Button from "../UI/Button";
+import { useNavigate } from "react-router-dom";
 const About = () => {
   let title = useRef();
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/about");
+    console.log("clicked");
+  };
   useLayoutEffect(() => {
     titleAnimate(title);
   }, []);
@@ -32,20 +37,18 @@ const About = () => {
       <article className="flex w-1/2 flex-col justify-center">
         <h1
           ref={(el) => (title = el)}
-          className="text-center text-4xl font-bold  underline decoration-yellow-300 decoration-solid decoration-[14px] underline-offset-2 sm:text-5xl"
+          className="text-left text-4xl font-bold  underline decoration-yellow-300 decoration-solid decoration-[14px] underline-offset-2 sm:text-5xl"
         >
-          O Nama
+          O Nama i Baloti
         </h1>
-        <p className="mt-8 text-center text-2xl text-slate-700 dark:text-slate-400">
+        <p className="my-6 text-left text-2xl text-slate-700 dark:text-slate-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed
           ligula quis nisi suscipit accumsan. Cras a magna nec lacus malesuada
           pellentesque a vestibulum ante. In vitae ex tincidunt, tempus velit
           vitae, tincidunt ex. Suspendisse nec risus tempus, auctor risus a,
           scelerisque lacus.
         </p>
-        <button className="w-44 h-10 rounded-[7px] border border-solid border-slate-900 bg-green-900 p-3 text-base font-semibold capitalize  hover:bg-green-700 hover:shadow-custom active:bg-green-500 dark:border-none">
-          Saznaj Više
-        </button>
+        <Button text="Saznaj više &#10132;" onClick={handleClick} />
       </article>
     </section>
   );

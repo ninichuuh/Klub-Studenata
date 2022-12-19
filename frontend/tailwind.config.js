@@ -5,10 +5,16 @@ module.exports = {
     extend: {
       colors: {
         zuta: {
-          light: '#fef4e4',
-          DEFAULT: '#ffff01',
-          dark: '#fee5bc',
-        }},
+          light: "#fef4e4",
+          DEFAULT: "#ffff01",
+          dark: "#fee5bc"
+        },
+        zelena: {
+          light: "#fef4e4",
+          DEFAULT: "#049B3B",
+          dark: "#fee5bc"
+        }
+      },
       boxShadow: {
         custom: "0px 10px 20px rgba(0, 0, 0, 0.1)",
         event: "0px 0px 30px rgba(0, 0, 0, 0.06)"
