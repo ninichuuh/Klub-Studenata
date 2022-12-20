@@ -12,6 +12,7 @@ const NewEventForm = ({ users }) => {
 
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [mainevent, setMainevent] = useState("");
   const [userId, setUserId] = useState(users[0].id);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const NewEventForm = ({ users }) => {
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onTextChanged = (e) => setText(e.target.value);
+  const onMaineventChanged = (e) => setMainevent((prev) => !prev);
   const onUserIdChanged = (e) => setUserId(e.target.value);
 
   const canSave = [title, text, userId].every(Boolean) && !isLoading;
@@ -85,6 +87,20 @@ const NewEventForm = ({ users }) => {
           value={text}
           onChange={onTextChanged}
         />
+        <label
+              className="form__label form__checkbox-container"
+              htmlFor="mainevent"
+            >
+              Main Event:
+              <input
+                className="form__checkbox"
+                id="mainevent"
+                name="mainevent"
+                type="checkbox"
+                checked={mainevent}
+                onChange={onMaineventChanged}
+              />
+            </label>
 
         <label
           className="form__label form__checkbox-container"

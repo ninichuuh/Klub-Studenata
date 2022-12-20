@@ -19,6 +19,10 @@ const eventSchema = new mongoose.Schema(
     active: {
       type: Boolean,
       default: false
+    },
+    mainevent: {
+      type: Boolean,
+      default: false
     }
   },
   {

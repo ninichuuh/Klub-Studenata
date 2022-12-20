@@ -10,4 +10,5 @@ import LogoVec from "./Vector.png"
 import Koza from "./koza.png"
 import Strip from "./strip.svg"
 import Login from "./login.svg"
-export { Strip,Koza,Login,LogoVec,img1, img2, img3, img4, img5, Studenti, Mate, Creative };
+import heroImg from "./hero-img.png"
+export { heroImg,Strip,Koza,Login,LogoVec,img1, img2, img3, img4, img5, Studenti, Mate, Creative };

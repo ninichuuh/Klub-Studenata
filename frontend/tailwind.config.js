@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        heroImg: "url('./img/hero-img.png')"
+      },
       colors: {
         zuta: {
           light: "#fef4e4",
@@ -32,7 +35,6 @@ module.exports = {
       },
       animation: {
         "open-menu": "open-menu 0.5s ease-in-out forwards",
-        "mate-pulse": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite"
       }
     }
   },

@@ -6,17 +6,18 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="widescreen:section-min-height tallscreen:section-min-height section-min-height flex scroll-mt-20 flex-row place-content-evenly items-center gap-12 p-6"
+      className="widescreen:section-min-height tallscreen:section-min-height section-min-height flex scroll-mt-20 flex-row justify-center gap-12 p-6"
     >
       <div>
-        {" "}
-        <h2 className="mb-12 text-center text-base font-bold  underline decoration-yellow-300 decoration-solid decoration-[14px] underline-offset-[14px] sm:text-5xl">
+        <h2 className="mb-12 text-center text-base font-bold underline decoration-yellow-300 decoration-solid decoration-[14px] underline-offset-[14px] sm:text-5xl">
           Kontaktiraj nas
         </h2>
-        <form className="flex flex-col  " onSubmit={handleSubmit}>
-          <input type="email" id="email" placeholder="email" />
-          <input type="text" id="naslov" placeholder="naslov" />
+        <form className="flex flex-col w-[580px] h-[650px] gap-8" onSubmit={handleSubmit}>
+          <label htmlFor="email" >E-pošta
+          <input type="email" id="email" placeholder="mate.balota@ksimb.hr" className="border-red rounded-lg border-[6px] w-full h-12" /></label>
+          <input type="text" id="naslov" placeholder="naslov" className="border-red rounded-lg border-[6px] w-full h-12" />
           <input
+          className="border-red rounded-lg border-[6px] w-full h-48"
             type="texarea"
             id="poruke"
             placeholder="poruka"
@@ -25,8 +26,9 @@ const Contact = () => {
           />
           <Button text="Učitaj slike" />
           <hr />
-          <input type="checkbox" placeholder="Ovim putem" />
-          <Button text="Pošalji &#10132;" />
+          <div><label className="text-xs accent-zelena" htmlFor="policy">
+          <input id="policy"  type="checkbox"/>Pročitao/la sam pravila privatnosti i slažem se s uvjetima.</label>
+          <Button text="Pošalji &#10132;" /></div>
         </form>
       </div>
     </section>

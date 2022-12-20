@@ -27,7 +27,7 @@ const getAllEvents = async (req, res) => {
 
 // @access Private
 const createNewEvent = async (req, res) => {
-  const { user, title, text } = req.body;
+  const { user, title, text, mainevent } = req.body;
 
   // Confirm data
   if (!user || !title || !text) {
@@ -47,7 +47,7 @@ const createNewEvent = async (req, res) => {
   }
 
   // Create and store the new user
-  const event = await Event.create({ user, title, text });
+  const event = await Event.create({ user, title, text, mainevent });
 
   if (event) {
     // Created
@@ -92,6 +92,7 @@ const updateEvent = async (req, res) => {
   event.title = title;
   event.text = text;
   event.active = active;
+  event.mainevent = mainevent;
 
   const updatedEvent = await event.save();
 

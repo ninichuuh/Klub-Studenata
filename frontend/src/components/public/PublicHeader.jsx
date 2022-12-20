@@ -20,7 +20,7 @@ const PublicHeader = () => {
   return (
     <header
       // ref={(el) => (introNav = el)}
-      className="sticky top-0 z-10 overflow-hidden overflow-x-hidden "
+      className="top-0 z-10 overflow-hidden overflow-x-hidden "
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <h1 className="text-l font-medium">
