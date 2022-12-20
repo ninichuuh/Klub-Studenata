@@ -7,6 +7,7 @@ import { ROLES } from "../../config/roles";
 
 const USER_REGEX = /^[A-z]{3,20}$/;
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
+const EMAIL_REGEX = /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/
 
 const EditUserForm = ({ user }) => {
   const [updateUser, { isLoading, isSuccess, isError, error }] =
@@ -21,8 +22,12 @@ const EditUserForm = ({ user }) => {
 
   const [username, setUsername] = useState(user.username);
   const [validUsername, setValidUsername] = useState(false);
+  const [email, setEmail] = useState(user.email);
+  const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
+  const [oib, setOib] = useState("");
+  const [university, setUniversity] = useState(user.university);
   const [roles, setRoles] = useState(user.roles);
   const [active, setActive] = useState(user.active);
 
@@ -35,9 +40,16 @@ const EditUserForm = ({ user }) => {
   }, [password]);
 
   useEffect(() => {
+    setValidEmail(EMAIL_REGEX.test(email));
+  }, [email]);
+  
+  useEffect(() => {
     if (isSuccess || isDelSuccess) {
       setUsername("");
       setPassword("");
+      setEmail("");
+      setOib("")
+      setUniversity("")
       setRoles([]);
       navigate("/dash/users");
     }
@@ -45,7 +57,9 @@ const EditUserForm = ({ user }) => {
 
   const onUsernameChanged = (e) => setUsername(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
-
+  const onEmailChanged = (e) => setEmail(e.target.value);
+  const onOibChanged = (e) => setOib(e.target.value);
+  const onUniversityChanged = (e) => setUniversity(e.target.value);
   const onRolesChanged = (e) => {
     const values = Array.from(
       e.target.selectedOptions,
@@ -58,9 +72,9 @@ const EditUserForm = ({ user }) => {
 
   const onSaveUserClicked = async (e) => {
     if (password) {
-      await updateUser({ id: user.id, username, password, roles, active });
+      await updateUser({ id: user.id, username, password, roles, active, email, oib, university });
     } else {
-      await updateUser({ id: user.id, username, roles, active });
+      await updateUser({ id: user.id, username, roles, active,email, oib, university });
     }
   };
 
@@ -80,9 +94,9 @@ const EditUserForm = ({ user }) => {
   let canSave;
   if (password) {
     canSave =
-      [roles.length, validUsername, validPassword].every(Boolean) && !isLoading;
+      [roles.length, validUsername, validPassword, validEmail].every(Boolean) && !isLoading;
   } else {
-    canSave = [roles.length, validUsername].every(Boolean) && !isLoading;
+    canSave = [roles.length, validUsername, validEmail].every(Boolean) && !isLoading;
   }
 
   const errClass = isError || isDelError ? "errmsg" : "offscreen";
@@ -99,7 +113,7 @@ const EditUserForm = ({ user }) => {
     <>
       <p className={errClass}>{errContent}</p>
 
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
+      <form className="form flex flex-col w-1/3" onSubmit={(e) => e.preventDefault()}>
         <div className="form__title-row">
           <h2>Edit User</h2>
           <div className="form__action-buttons">
@@ -120,7 +134,7 @@ const EditUserForm = ({ user }) => {
             </button>
           </div>
         </div>
-        <label className="form__label" htmlFor="username">
+        <label className="flex flex-row justify-between" htmlFor="username">
           Username: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
@@ -133,8 +147,8 @@ const EditUserForm = ({ user }) => {
           onChange={onUsernameChanged}
         />
 
-        <label className="form__label" htmlFor="password">
-          Password: <span className="nowrap">[empty = no change]</span>{" "}
+        <label className="flex flex-row justify-between" htmlFor="password">
+          Password: 
           <span className="nowrap">[4-12 chars incl. !@#$%]</span>
         </label>
         <input
@@ -145,7 +159,45 @@ const EditUserForm = ({ user }) => {
           value={password}
           onChange={onPasswordChanged}
         />
-
+        <label className="flex flex-row justify-between" htmlFor="email">
+          Email: <span className="nowrap"></span>{" "}
+          <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+        </label>
+        <input
+          className={`form__input `}
+          id="email"
+          name="email"
+          type="email"
+          value={email}
+          autoComplete= "off"
+          onChange={onEmailChanged}
+        />
+          <label className="flex flex-row justify-between" htmlFor="university">
+          University: <span className="nowrap"></span>{" "}
+          <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+        </label>
+        <input
+          className={`form__input `}
+          id="university"
+          name="university"
+          type="university"
+          value={university}
+          autoComplete= "off"
+          onChange={onUniversityChanged}
+        />
+     <label className="flex flex-row justify-between" htmlFor="oib">
+          Oib: <span className="nowrap"></span>{" "}
+          <span className="nowrap">[11 chars]</span>
+        </label>
+        <input
+          className={`form__input `}
+          id="oib"
+          name="oib"
+          type="oib"
+          value={oib}
+          autoComplete= "off"
+          onChange={onOibChanged}
+        />
         <label
           className="form__label form__checkbox-container"
           htmlFor="user-active"

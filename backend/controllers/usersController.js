@@ -22,10 +22,10 @@ const getAllUsers = async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = async (req, res) => {
-  const { username, password, roles } = req.body;
+  const { username, password, roles, email, university, oib } = req.body;
 
   // Confirm data
-  if (!username || !password) {
+  if (!username || !password || !email || !university || !oib) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -44,8 +44,8 @@ const createNewUser = async (req, res) => {
 
   const userObject =
     !Array.isArray(roles) || !roles.length
-      ? { username, password: hashedPwd }
-      : { username, password: hashedPwd, roles };
+      ? { username, password: hashedPwd, email, university, oib }
+      : { username, password: hashedPwd, roles, university, email, oib };
 
   // Create and store new user
   const user = await User.create(userObject);
@@ -62,7 +62,8 @@ const createNewUser = async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = async (req, res) => {
-  const { id, username, roles, active, password } = req.body;
+  const { id, username, roles, active, password, oib, email, university } =
+    req.body;
 
   // Confirm data
   if (
@@ -70,7 +71,10 @@ const updateUser = async (req, res) => {
     !username ||
     !Array.isArray(roles) ||
     !roles.length ||
-    typeof active !== "boolean"
+    typeof active !== "boolean" ||
+    !oib ||
+    !email ||
+    !university
   ) {
     return res
       .status(400)
@@ -98,6 +102,9 @@ const updateUser = async (req, res) => {
   user.username = username;
   user.roles = roles;
   user.active = active;
+  user.email = email;
+  user.oib = oib;
+  user.university = university;
 
   if (password) {
     // Hash password

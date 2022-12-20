@@ -3,12 +3,21 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        heroImg: "url('./img/hero-img.png')"
+      },
       colors: {
         zuta: {
-          light: '#fef4e4',
-          DEFAULT: '#ffff01',
-          dark: '#fee5bc',
-        }},
+          light: "#fef4e4",
+          DEFAULT: "#ffff01",
+          dark: "#fee5bc"
+        },
+        zelena: {
+          light: "#fef4e4",
+          DEFAULT: "#049B3B",
+          dark: "#fee5bc"
+        }
+      },
       boxShadow: {
         custom: "0px 10px 20px rgba(0, 0, 0, 0.1)",
         event: "0px 0px 30px rgba(0, 0, 0, 0.06)"
@@ -26,7 +35,6 @@ module.exports = {
       },
       animation: {
         "open-menu": "open-menu 0.5s ease-in-out forwards",
-        "mate-pulse": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite"
       }
     }
   },

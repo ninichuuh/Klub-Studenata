@@ -1,25 +1,26 @@
 import React, { useState } from "react";
-import { useLayoutEffect } from "react";
-import { useRef } from "react";
+// import { useLayoutEffect } from "react";
+// import { useRef } from "react";
 import { LogoVec, Login } from "../../img/images";
-import { headerIntro } from "./Animate";
+// import { headerIntro } from "./Animate";
 const PublicHeader = () => {
-  let introNav = useRef();
+  // let introNav = useRef();
 
-  useLayoutEffect(() => {
-    headerIntro(introNav);
-  }, []);
+  // useLayoutEffect(() => {
+  //   headerIntro(introNav);
+  // }, []);
 
   const [isOpen, setToggleMenu] = useState(false);
 
   const toggleMenu = () => {
     setToggleMenu(!isOpen);
+    console.log(isOpen);
   };
 
   return (
     <header
-      ref={(el) => (introNav = el)}
-      className="sticky top-0 z-10 overflow-hidden overflow-x-hidden bg-white text-black"
+      // ref={(el) => (introNav = el)}
+      className="top-0 z-10 overflow-hidden overflow-x-hidden "
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <h1 className="text-l font-medium">
@@ -32,36 +33,37 @@ const PublicHeader = () => {
             </p>{" "}
           </div>{" "}
         </h1>
-        <div>
+        <div className="">
           <button
             id="hamburger-button"
             className={
               isOpen
-                ? "toggle-btn relative h-8 w-8 cursor-pointer text-3xl md:hidden"
-                : "relative h-8 w-8 cursor-pointer text-3xl md:hidden"
+                ? "relative h-8 w-8 cursor-pointer bg-black text-3xl md:hidden"
+                : "relative h-8 w-8 cursor-pointer bg-zelena text-3xl md:hidden"
             }
             onClick={toggleMenu}
             aria-label="mobile menu"
+          />
+          <nav
+            className="text-l hidden flex-nowrap space-x-6 md:block"
+            aria-label="main"
           >
-            <div className="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']"></div>
-          </button>
-          <nav className="hidden space-x-6 text-l md:block" aria-label="main">
-            <a href="#sections" className="hover:opacity-90">
+            <a href="#hero" className="hover:opacity-50">
               Naslovna
             </a>
-            <a href="#contact" className="hover:opacity-90">
+            <a href="#about" className="hover:opacity-50">
               O Nama
             </a>
-            <a href="/events" className="hover:opacity-90">
+            <a href="#sections" className="hover:opacity-50">
               Naše Sekcije
             </a>
-            <a href="/login" className="hover:opacity-90">
+            <a href="#events" className="hover:opacity-50">
               Događanja
             </a>
-            <a href="#contact" className="hover:opacity-90">
+            <a href="#contact" className="hover:opacity-50">
               Kontakt
             </a>
-            <a href="/login" className="hover:opacity-90">
+            <a href="/login" className="inline-block hover:opacity-50">
               <img src={Login} alt="Login icon" />
             </a>
           </nav>
@@ -77,7 +79,7 @@ const PublicHeader = () => {
         onClick={toggleMenu}
       >
         <nav
-          className="flex min-h-screen flex-col items-center py-8"
+          className="flex min-h-screen flex-col items-center bg-zelena py-8"
           aria-label="mobile"
         >
           <a href="#hero" className="w-full py-6 text-center hover:opacity-90">
@@ -99,7 +101,7 @@ const PublicHeader = () => {
             Kontaktiraj nas
           </a>
           <a
-            href="/events"
+            href="#events"
             className="w-full py-6 text-center hover:opacity-90"
           >
             Događanja

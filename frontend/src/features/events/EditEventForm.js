@@ -24,6 +24,7 @@ const EditEventForm = ({ event, users }) => {
   const [title, setTitle] = useState(event.title);
   const [text, setText] = useState(event.text);
   const [active, setActive] = useState(event.active);
+  const [mainevent, setMainevent] = useState(event.mainevent);
   const [userId, setUserId] = useState(event.user);
 
   useEffect(() => {
@@ -37,14 +38,15 @@ const EditEventForm = ({ event, users }) => {
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onTextChanged = (e) => setText(e.target.value);
-  const onactiveChanged = (e) => setActive((prev) => !prev);
+  const onActiveChanged = (e) => setActive((prev) => !prev);
+  const onMaineventChanged = (e) => setMainevent((prev) => !prev);
   const onUserIdChanged = (e) => setUserId(e.target.value);
 
   const canSave = [title, text, userId].every(Boolean) && !isLoading;
 
   const onSaveEventClicked = async (e) => {
     if (canSave) {
-      await updateEvent({ id: event.id, user: userId, title, text, active });
+      await updateEvent({ id: event.id, user: userId, title, text, active, mainevent });
     }
   };
 
@@ -152,7 +154,21 @@ const EditEventForm = ({ event, users }) => {
                 name="active"
                 type="checkbox"
                 checked={active}
-                onChange={onactiveChanged}
+                onChange={onActiveChanged}
+              />
+            </label>
+            <label
+              className="form__label form__checkbox-container"
+              htmlFor="mainevent"
+            >
+              Main Event:
+              <input
+                className="form__checkbox"
+                id="mainevent"
+                name="mainevent"
+                type="checkbox"
+                checked={mainevent}
+                onChange={onMaineventChanged}
               />
             </label>
 

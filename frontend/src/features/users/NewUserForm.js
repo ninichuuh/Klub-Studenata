@@ -8,6 +8,7 @@ import useTitle from "../../hooks/useTitle";
 
 const USER_REGEX = /^[A-z]{3,20}$/;
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
+const EMAIL_REGEX = /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/
 
 const NewUserForm = () => {
   useTitle("Users: New User");
@@ -19,7 +20,11 @@ const NewUserForm = () => {
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
+  const [oib, setOib] = useState("");
+  const [university, setUniversity] = useState("");
   const [validPassword, setValidPassword] = useState(false);
   const [roles, setRoles] = useState(["Employee"]);
 
@@ -30,11 +35,17 @@ const NewUserForm = () => {
   useEffect(() => {
     setValidPassword(PWD_REGEX.test(password));
   }, [password]);
+  useEffect(() => {
+    setValidEmail(EMAIL_REGEX.test(email));
+  }, [email]);
 
   useEffect(() => {
     if (isSuccess) {
       setUsername("");
       setPassword("");
+      setEmail("");
+      setOib("")
+      setUniversity("")
       setRoles([]);
       navigate("/dash/users");
     }
@@ -42,6 +53,9 @@ const NewUserForm = () => {
 
   const onUsernameChanged = (e) => setUsername(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
+  const onEmailChanged = (e) => setEmail(e.target.value);
+  const onOibChanged = (e) => setOib(e.target.value);
+  const onUniversityChanged = (e) => setUniversity(e.target.value);
 
   const onRolesChanged = (e) => {
     const values = Array.from(
@@ -52,12 +66,12 @@ const NewUserForm = () => {
   };
 
   const canSave =
-    [roles.length, validUsername, validPassword].every(Boolean) && !isLoading;
+    [roles.length, validUsername, validPassword, validEmail].every(Boolean) && !isLoading;
 
   const onSaveUserClicked = async (e) => {
     e.preventDefault();
     if (canSave) {
-      await addNewUser({ username, password, roles });
+      await addNewUser({ username, password, roles, email, oib, university });
     }
   };
 
@@ -81,7 +95,7 @@ const NewUserForm = () => {
     <>
       <p className={errClass}>{error?.data?.message}</p>
 
-      <form className="" onSubmit={onSaveUserClicked}>
+      <form className="text-slate-600" onSubmit={onSaveUserClicked}>
         <div className="">
           <h2>New User</h2>
           <div className="form__action-buttons">
@@ -92,7 +106,7 @@ const NewUserForm = () => {
         </div>
         <div className="group relative z-0 mb-6 w-full">
           <input
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
+            className=""
             id="username"
             name="username"
             type="text"
@@ -102,7 +116,7 @@ const NewUserForm = () => {
             placeholder=""
           />
           <label
-            className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            className=""
             htmlFor="username"
           >
             Username
@@ -110,7 +124,7 @@ const NewUserForm = () => {
         </div>
         <div className="group relative z-0 mb-6 w-full">
           <input
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
+            className=""
             id="password"
             name="password"
             type="password"
@@ -119,13 +133,51 @@ const NewUserForm = () => {
             placeholder=""
           />
           <label
-            className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            className=""
             htmlFor="password"
           >
             Password
           </label>
         </div>
-
+        <label className="flex flex-row justify-between" htmlFor="email">
+          Email: <span className="nowrap"></span>{" "}
+          <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+        </label>
+        <input
+          className={`form__input `}
+          id="email"
+          name="email"
+          type="email"
+          value={email}
+          autoComplete= "off"
+          onChange={onEmailChanged}
+        />
+        <label className="flex flex-row justify-between" htmlFor="university">
+          University: <span className="nowrap"></span>{" "}
+          <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+        </label>
+        <input
+          className={`form__input `}
+          id="university"
+          name="university"
+          type="university"
+          value={university}
+          autoComplete= "off"
+          onChange={onUniversityChanged}
+        />
+             <label className="flex flex-row justify-between" htmlFor="oib">
+          Oib: <span className="nowrap"></span>{" "}
+          <span className="nowrap">[11 chars]</span>
+        </label>
+        <input
+          className={`form__input `}
+          id="oib"
+          name="oib"
+          type="oib"
+          value={oib}
+          autoComplete= "off"
+          onChange={onOibChanged}
+        />
         <label className="form__label" htmlFor="roles">
           ASSIGNED ROLES:
         </label>

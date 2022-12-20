@@ -10,9 +10,10 @@ const EventSwiper = () => {
       loop={true}
       direction={"vertical"}
       mousewheel={true}
-    slidesPerView={3}
+      slidesPerView={5}
+      spaceBetween={15}
       modules={[Mousewheel]}
-      className="h-96"
+      className="max-h-[756px]"
     >
       {eventsData.map((event) => (
         <SwiperSlide key={event.id} event={event}>

@@ -12,18 +12,14 @@ const SectionSwiper = () => {
       loop={true}
       direction={"horizontal"}
       mousewheel={true}
-      centeredSlides={true}
-      slidesPerView={3}
-      spaceBetween={30}
+      slidesPerView={5}
       coverflowEffect={{
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
+        rotate: 18,
+        depth: 0,
         modifier: 1,
-        slideShadows: true
+        slideShadows: false
       }}
-      modules={[ Mousewheel, EffectCoverflow]}
-      className="gird"
+      modules={[Mousewheel, EffectCoverflow]}
     >
       {sectionsData.map((section) => (
         <SwiperSlide key={section.id} section={section}>
